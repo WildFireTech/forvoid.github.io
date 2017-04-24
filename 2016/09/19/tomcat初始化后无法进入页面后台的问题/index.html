@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>tomcat初始化后无法进入页面后台的问题 | forvoid的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="问题描述今天为了搭建一个gitbucket服务端，我又下载了tomcat8.tar.gz数据包进行安装，在解压玩成之后，我需要用界面登录tomcat服务器放入gitbucket.war但是需要我配置tomcat中的tomcat-users.xml信息给定一定的账户和密码才能进入后台。我安照网上的要求配置后和我以前的一些经历一样。无论怎么重新启动都无法进入host/manager这个页面。">
+<meta name="keywords" content="tomcat,bug">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tomcat初始化后无法进入页面后台的问题">
+<meta property="og:url" content="https://forvoid.me/2016/09/19/tomcat初始化后无法进入页面后台的问题/index.html">
+<meta property="og:site_name" content="forvoid的博客">
+<meta property="og:description" content="问题描述今天为了搭建一个gitbucket服务端，我又下载了tomcat8.tar.gz数据包进行安装，在解压玩成之后，我需要用界面登录tomcat服务器放入gitbucket.war但是需要我配置tomcat中的tomcat-users.xml信息给定一定的账户和密码才能进入后台。我安照网上的要求配置后和我以前的一些经历一样。无论怎么重新启动都无法进入host/manager这个页面。">
+<meta property="og:updated_time" content="2016-09-27T16:17:15.824Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="tomcat初始化后无法进入页面后台的问题">
+<meta name="twitter:description" content="问题描述今天为了搭建一个gitbucket服务端，我又下载了tomcat8.tar.gz数据包进行安装，在解压玩成之后，我需要用界面登录tomcat服务器放入gitbucket.war但是需要我配置tomcat中的tomcat-users.xml信息给定一定的账户和密码才能进入后台。我安照网上的要求配置后和我以前的一些经历一样。无论怎么重新启动都无法进入host/manager这个页面。">
+  
+    <link rel="alternate" href="/atom.xml" title="forvoid的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://forvoid.me"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">forvoid的博客</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-tomcat初始化后无法进入页面后台的问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/19/tomcat初始化后无法进入页面后台的问题/" class="article-date">
+  <time datetime="2016-09-19T10:08:52.000Z" itemprop="datePublished">2016-09-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tomcat/">tomcat</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      tomcat初始化后无法进入页面后台的问题
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>今天为了搭建一个gitbucket服务端，我又下载了tomcat8.tar.gz数据包进行安装，在解压玩成之后，我需要用界面登录tomcat服务器放入gitbucket.war但是需要我配置tomcat中的<code>tomcat-users.xml</code>信息给定一定的账户和密码才能进入后台。我安照网上的要求配置后和我以前的一些经历一样。无论怎么重新启动都无法进入<code>host/manager</code>这个页面。<br><a id="more"></a></p>
+<h1 id="问题解决方式"><a href="#问题解决方式" class="headerlink" title="问题解决方式"></a>问题解决方式</h1><h2 id="第一、我需要结局给tomcat-users-xml给定帐号密码的值"><a href="#第一、我需要结局给tomcat-users-xml给定帐号密码的值" class="headerlink" title="第一、我需要结局给tomcat-users.xml给定帐号密码的值"></a>第一、我需要结局给<code>tomcat-users.xml</code>给定帐号密码的值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;role rolename=&quot;manager-gui&quot;/&gt;</div><div class="line"></div><div class="line">&lt;user username=&quot;tomcat&quot; password=&quot;tomcat&quot; roles=&quot;manager-gui&quot;/&gt;</div></pre></td></tr></table></figure>
+<p>角色只需要manager-gui这个角色就可以了，在网页信息中也有显示。</p>
+<h2 id="第二个问题是我需要让我进入那个登录验证的页面。"><a href="#第二个问题是我需要让我进入那个登录验证的页面。" class="headerlink" title="第二个问题是我需要让我进入那个登录验证的页面。"></a>第二个问题是我需要让我进入那个登录验证的页面。</h2><p>这就是我在查看<code>http://www.cnblogs.com/dawugui5460/articles/4164124.html</code>这位大神的博客中看到的。说进入不了页面的原因是因为tomcat的安装包中没有提供manager.xml这个文件。有些版本的tomcat无法启动管理界面。<br>解决方法：</p>
+<ul>
+<li>查看是否存在<code>conf/Catalina/localhost/manager.xml</code>这个文件夹，</li>
+<li><p>如果没有的话就创建并且填入值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">  &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;Context antiResourceLocking=&quot;false&quot; privileged=&quot;true&quot; /&gt;</div></pre></td></tr></table></figure>
+<p>保存重启后再看看，可不可以了。</p>
+<h2 id="感悟"><a href="#感悟" class="headerlink" title="感悟"></a>感悟</h2><p>非常感谢那位大神的博客。我试了很多次，也baidu、google了很久，这方面的信息确实有点少。希望以后自己也能够善于的去发现这些问题。并且可以自己解决掉。我写出来的目地是确实知道的人比较少。后面有需要的人，有幸的话可以看到这篇博文的话，希望他们也可以解决自己的问题。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://forvoid.me/2016/09/19/tomcat初始化后无法进入页面后台的问题/" data-id="cj1vj93c50002zovvkl080pfl" class="article-share-link">分享</a>
+      
+      
+        <a href="https://forvoid.me/2016/09/19/tomcat初始化后无法进入页面后台的问题/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bug/">bug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tomcat/">tomcat</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/06/25/对程序员的一些理性的思考/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          对程序员的一些理性的思考
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/23/大三上学期面试寒假实习生收获/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">大三上学期面试寒假实习生收获</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+      </section>
+      
+       
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#问题描述"><span class="toc-number">1.</span> <span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题解决方式"><span class="toc-number">2.</span> <span class="toc-text">问题解决方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一、我需要结局给tomcat-users-xml给定帐号密码的值"><span class="toc-number">2.1.</span> <span class="toc-text">第一、我需要结局给tomcat-users.xml给定帐号密码的值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二个问题是我需要让我进入那个登录验证的页面。"><span class="toc-number">2.2.</span> <span class="toc-text">第二个问题是我需要让我进入那个登录验证的页面。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#感悟"><span class="toc-number">2.3.</span> <span class="toc-text">感悟</span></a></li></ol></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+    
+
+  
+    
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2017 forvoid&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;172953249@qq.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+
+<script>
+  var disqus_shortname = 'forvoid';
+  
+  var disqus_url = 'https://forvoid.me/2016/09/19/tomcat初始化后无法进入页面后台的问题/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>
