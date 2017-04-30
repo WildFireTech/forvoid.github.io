@@ -3,19 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>大三上学期面试寒假实习生收获 | forvoid的博客</title>
+  <title>Java虚拟机架构笔记 | forvoid的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##你好">
-<meta name="keywords" content="实习面试">
+  <meta name="description" content="java虚拟机的基本结构给图java的基本结构：">
+<meta name="keywords" content="javaVM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="大三上学期面试寒假实习生收获">
-<meta property="og:url" content="https://forvoid.me/2016/09/23/大三上学期面试寒假实习生收获/index.html">
+<meta property="og:title" content="Java虚拟机架构笔记">
+<meta property="og:url" content="https://forvoid.me/2017/04/30/Java虚拟机架构笔记/index.html">
 <meta property="og:site_name" content="forvoid的博客">
-<meta property="og:description" content="##你好">
-<meta property="og:updated_time" content="2016-09-27T16:17:46.778Z">
+<meta property="og:description" content="java虚拟机的基本结构给图java的基本结构：">
+<meta property="og:image" content="https://forvoid.me/2017/04/30/images/Java_VM/JavaVM_base.png">
+<meta property="og:image" content="https://forvoid.me/2017/04/30/images/Java_VM/new_tenured.png">
+<meta property="og:updated_time" content="2017-04-30T16:26:43.030Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大三上学期面试寒假实习生收获">
-<meta name="twitter:description" content="##你好">
+<meta name="twitter:title" content="Java虚拟机架构笔记">
+<meta name="twitter:description" content="java虚拟机的基本结构给图java的基本结构：">
+<meta name="twitter:image" content="https://forvoid.me/2017/04/30/images/Java_VM/JavaVM_base.png">
   
     <link rel="alternate" href="/atom.xml" title="forvoid的博客" type="application/atom+xml">
   
@@ -68,10 +71,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-大三上学期面试寒假实习生收获" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Java虚拟机架构笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/09/23/大三上学期面试寒假实习生收获/" class="article-date">
-  <time datetime="2016-09-23T08:01:34.000Z" itemprop="datePublished">2016-09-23</time>
+    <a href="/2017/04/30/Java虚拟机架构笔记/" class="article-date">
+  <time datetime="2017-04-30T15:20:44.000Z" itemprop="datePublished">2017-04-30</time>
 </a>
     
   </div>
@@ -82,7 +85,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      大三上学期面试寒假实习生收获
+      Java虚拟机架构笔记
     </h1>
   
 
@@ -92,18 +95,40 @@
       
         <!-- Table of Contents -->
         
-        <p>##<br>你好</p>
+        <h1 id="java虚拟机的基本结构"><a href="#java虚拟机的基本结构" class="headerlink" title="java虚拟机的基本结构"></a>java虚拟机的基本结构</h1><p>给图java的基本结构：<br><img src="../images/Java_VM/JavaVM_base.png" alt="Java的基本结构"><br><a id="more"></a></p>
+<blockquote>
+<ul>
+<li>1、类加载结构：从文件系统或者网络中加载Class信息，类信息放入方法区的内存空间。</li>
+<li>2、方法区：方法区存放类的信息，运行时常量池信息，（包括字符串字面量、数字常量）</li>
+<li>3、Java堆：几乎所有的类的实例（对象）都存放在这里，这也是GC发生的主要区域。是线程共享空间。</li>
+<li>4、直接内存：NIO允许Java程序使用直接内存，直接内存的大小不受Java堆的限制，受系统内存的大小限制。</li>
+<li>5、Java栈：每个Java的线程都会有一个私有Java栈，Java栈中保存着局部变量、方法参数、同时和java方法的调用、返回相关</li>
+<li>6、本地方法栈：和Java栈类似，作为本地方法的调用</li>
+<li>7、Pc寄存器（程序计数器）：每个线程私有的，pc寄存器会指向当前正在被执行的指令。</li>
+<li>9、执行引擎：Java虚拟机核心组件，负责执行虚拟机字节码。</li>
+</ul>
+</blockquote>
+<p>垃圾回收系统（GC）：对方法区、Java堆和直接内存进行回收。</p>
+<h1 id="Java堆"><a href="#Java堆" class="headerlink" title="Java堆"></a>Java堆</h1><blockquote>
+<p>Java堆是GC的重点区域，Java几乎所有对象都存放在这里。</p>
+</blockquote>
+<p><img src="../images/Java_VM/new_tenured.png" alt="java堆分区"></p>
+<p>根据垃圾回收的机制不同，Java堆可能拥有不同的结构。常见结构为<code>新生代</code>和<code>老年代</code></p>
+<ul>
+<li>新生代存放新生的对象或者年龄不大的对象，其中分为了eden、s0(from)、s1(to)三个区。from和to大小相等可以互换角色。</li>
+<li>老年代存放比较长久的对象：1、当eden区满后GC，并且from或者to也满时，直接进入老年代；2、在to或者from区的对象，每经过一次新生代GC年龄都加一，年龄到达一定条件，进入老年代。</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://forvoid.me/2016/09/23/大三上学期面试寒假实习生收获/" data-id="cj24wt9u4000b9wvvodd1dqb2" class="article-share-link">分享</a>
+      <a data-url="https://forvoid.me/2017/04/30/Java虚拟机架构笔记/" data-id="cj24wt9sh00009wvvnljmhhsj" class="article-share-link">分享</a>
       
       
-        <a href="https://forvoid.me/2016/09/23/大三上学期面试寒假实习生收获/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://forvoid.me/2017/04/30/Java虚拟机架构笔记/#disqus_thread" class="article-comment-link">留言</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/实习面试/">实习面试</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javaVM/">javaVM</a></li></ul>
 
     </footer>
   </div>
@@ -111,20 +136,15 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/09/19/tomcat初始化后无法进入页面后台的问题/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/04/30/后台设置跨域的理解/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
-          tomcat初始化后无法进入页面后台的问题
+          后台设置跨域的理解
         
       </div>
     </a>
   
-  
-    <a href="/2016/11/20/redis入门学习/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">redis入门学习</div>
-    </a>
   
 </nav>
 
@@ -157,42 +177,24 @@
 
   
     
-  
+    <div class="widget-wrap">
     
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title recent-posts">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2017/04/30/Java虚拟机架构笔记/">Java虚拟机架构笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/30/后台设置跨域的理解/">后台设置跨域的理解</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/23/Java引用类型及分析/">Java引用类型及分析</a>
-          </li>
-        
-          <li>
-            <a href="/2016/11/20/redis入门学习/">redis入门学习</a>
-          </li>
-        
-          <li>
-            <a href="/2016/09/23/大三上学期面试寒假实习生收获/">大三上学期面试寒假实习生收获</a>
-          </li>
-        
-      </ul>
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#java虚拟机的基本结构"><span class="toc-number">1.</span> <span class="toc-text">java虚拟机的基本结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java堆"><span class="toc-number">2.</span> <span class="toc-text">Java堆</span></a></li></ol>
+          </div>
+      </div>
     </div>
-  </div>
 
+  
+    
+
+  
+    
+  
+    
   
     
 
@@ -203,35 +205,6 @@
 
   
     
-  <div class="widget-wrap">
-    <h3 class="widget-title recent-posts">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2017/04/30/Java虚拟机架构笔记/">Java虚拟机架构笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/30/后台设置跨域的理解/">后台设置跨域的理解</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/23/Java引用类型及分析/">Java引用类型及分析</a>
-          </li>
-        
-          <li>
-            <a href="/2016/11/20/redis入门学习/">redis入门学习</a>
-          </li>
-        
-          <li>
-            <a href="/2016/09/23/大三上学期面试寒假实习生收获/">大三上学期面试寒假实习生收获</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
   
 </aside>
 
@@ -276,7 +249,7 @@ window.onload = function() {
 <script>
   var disqus_shortname = 'forvoid';
   
-  var disqus_url = 'https://forvoid.me/2016/09/23/大三上学期面试寒假实习生收获/';
+  var disqus_url = 'https://forvoid.me/2017/04/30/Java虚拟机架构笔记/';
   
   (function(){
     var dsq = document.createElement('script');
