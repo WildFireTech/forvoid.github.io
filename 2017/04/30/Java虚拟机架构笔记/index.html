@@ -12,13 +12,13 @@
 <meta property="og:url" content="https://forvoid.me/2017/04/30/Java虚拟机架构笔记/index.html">
 <meta property="og:site_name" content="forvoid的博客">
 <meta property="og:description" content="java虚拟机的基本结构给图java的基本结构：">
-<meta property="og:image" content="https://forvoid.me/2017/04/30/images/Java_VM/JavaVM_base.png">
-<meta property="og:image" content="https://forvoid.me/2017/04/30/images/Java_VM/new_tenured.png">
-<meta property="og:updated_time" content="2017-04-30T16:26:43.030Z">
+<meta property="og:image" content="https://forvoid.me/images/Java_VM/JavaVM_base.png">
+<meta property="og:image" content="https://forvoid.me/images/Java_VM/new_tenured.png">
+<meta property="og:updated_time" content="2017-04-30T16:32:26.221Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java虚拟机架构笔记">
 <meta name="twitter:description" content="java虚拟机的基本结构给图java的基本结构：">
-<meta name="twitter:image" content="https://forvoid.me/2017/04/30/images/Java_VM/JavaVM_base.png">
+<meta name="twitter:image" content="https://forvoid.me/images/Java_VM/JavaVM_base.png">
   
     <link rel="alternate" href="/atom.xml" title="forvoid的博客" type="application/atom+xml">
   
@@ -95,7 +95,7 @@
       
         <!-- Table of Contents -->
         
-        <h1 id="java虚拟机的基本结构"><a href="#java虚拟机的基本结构" class="headerlink" title="java虚拟机的基本结构"></a>java虚拟机的基本结构</h1><p>给图java的基本结构：<br><img src="../images/Java_VM/JavaVM_base.png" alt="Java的基本结构"><br><a id="more"></a></p>
+        <h1 id="java虚拟机的基本结构"><a href="#java虚拟机的基本结构" class="headerlink" title="java虚拟机的基本结构"></a>java虚拟机的基本结构</h1><p>给图java的基本结构：<br><img src="/images/Java_VM/JavaVM_base.png" alt="Java的基本结构"><br><a id="more"></a></p>
 <blockquote>
 <ul>
 <li>1、类加载结构：从文件系统或者网络中加载Class信息，类信息放入方法区的内存空间。</li>
@@ -112,7 +112,7 @@
 <h1 id="Java堆"><a href="#Java堆" class="headerlink" title="Java堆"></a>Java堆</h1><blockquote>
 <p>Java堆是GC的重点区域，Java几乎所有对象都存放在这里。</p>
 </blockquote>
-<p><img src="../images/Java_VM/new_tenured.png" alt="java堆分区"></p>
+<p><img src="/images/Java_VM/new_tenured.png" alt="java堆分区"></p>
 <p>根据垃圾回收的机制不同，Java堆可能拥有不同的结构。常见结构为<code>新生代</code>和<code>老年代</code></p>
 <ul>
 <li>新生代存放新生的对象或者年龄不大的对象，其中分为了eden、s0(from)、s1(to)三个区。from和to大小相等可以互换角色。</li>
@@ -122,7 +122,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://forvoid.me/2017/04/30/Java虚拟机架构笔记/" data-id="cj24wt9sh00009wvvnljmhhsj" class="article-share-link">分享</a>
+      <a data-url="https://forvoid.me/2017/04/30/Java虚拟机架构笔记/" data-id="cj24wzjsn0002ucvvp383xafa" class="article-share-link">分享</a>
       
       
         <a href="https://forvoid.me/2017/04/30/Java虚拟机架构笔记/#disqus_thread" class="article-comment-link">留言</a>
