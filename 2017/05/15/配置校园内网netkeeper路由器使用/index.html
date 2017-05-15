@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>配置校园内网netkeeper路由器使用 | forvoid的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前景介绍我的是在重庆邮电大学（CQUPT）进行配置的，我们学校的网是电信的netkeeper。每个人都用一个帐号在自己的电脑上进行帐号登录后上网。十分的不方便，尤其是用电脑开的wifi，有些不稳定。所以我在网上找到了诸多大神的配置方法进行配置，并且记录下来便于以后自己好查看。 更新说明5-15：配置好了第一版（基于斐讯k2 + openwrt），完成断网重连，自动拨号功能。未完成稳定性问题没有解决">
+<meta name="keywords" content="netkeeper">
+<meta property="og:type" content="article">
+<meta property="og:title" content="配置校园内网netkeeper路由器使用">
+<meta property="og:url" content="https://forvoid.me/2017/05/15/配置校园内网netkeeper路由器使用/index.html">
+<meta property="og:site_name" content="forvoid的博客">
+<meta property="og:description" content="前景介绍我的是在重庆邮电大学（CQUPT）进行配置的，我们学校的网是电信的netkeeper。每个人都用一个帐号在自己的电脑上进行帐号登录后上网。十分的不方便，尤其是用电脑开的wifi，有些不稳定。所以我在网上找到了诸多大神的配置方法进行配置，并且记录下来便于以后自己好查看。 更新说明5-15：配置好了第一版（基于斐讯k2 + openwrt），完成断网重连，自动拨号功能。未完成稳定性问题没有解决">
+<meta property="og:image" content="https://forvoid.me/images/netkeeper/breed_web.png">
+<meta property="og:updated_time" content="2017-05-15T16:33:43.705Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="配置校园内网netkeeper路由器使用">
+<meta name="twitter:description" content="前景介绍我的是在重庆邮电大学（CQUPT）进行配置的，我们学校的网是电信的netkeeper。每个人都用一个帐号在自己的电脑上进行帐号登录后上网。十分的不方便，尤其是用电脑开的wifi，有些不稳定。所以我在网上找到了诸多大神的配置方法进行配置，并且记录下来便于以后自己好查看。 更新说明5-15：配置好了第一版（基于斐讯k2 + openwrt），完成断网重连，自动拨号功能。未完成稳定性问题没有解决">
+<meta name="twitter:image" content="https://forvoid.me/images/netkeeper/breed_web.png">
+  
+    <link rel="alternate" href="/atom.xml" title="forvoid的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://forvoid.me"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">forvoid的博客</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-配置校园内网netkeeper路由器使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/15/配置校园内网netkeeper路由器使用/" class="article-date">
+  <time datetime="2017-05-15T03:11:18.000Z" itemprop="datePublished">2017-05-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      配置校园内网netkeeper路由器使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h1 id="前景介绍"><a href="#前景介绍" class="headerlink" title="前景介绍"></a>前景介绍</h1><p>我的是在重庆邮电大学（CQUPT）进行配置的，我们学校的网是电信的netkeeper。每个人都用一个帐号在自己的电脑上进行帐号登录后上网。十分的不方便，尤其是用电脑开的wifi，有些不稳定。所以我在网上找到了诸多大神的配置方法进行配置，并且记录下来便于以后自己好查看。</p>
+<h1 id="更新说明"><a href="#更新说明" class="headerlink" title="更新说明"></a>更新说明</h1><p>5-15：配置好了第一版（基于斐讯k2 + openwrt），<del>完成断网重连，自动拨号功能</del>。未完成稳定性问题没有解决，。<br><a id="more"></a></p>
+<h1 id="配置方式"><a href="#配置方式" class="headerlink" title="配置方式"></a>配置方式</h1><h2 id="安装OpenWRT"><a href="#安装OpenWRT" class="headerlink" title="安装OpenWRT"></a>安装OpenWRT</h2><p>OpenWRT是一个linux内核的路由器系统。我们到openwrt官网即可下载<a href="https://openwrt.org/" target="_blank" rel="external">openwrt官网</a></p>
+<p>在路由器安装Openwrt前应该先刷一个breed基础系统防止失败GG。各个版本的网上都有，这里我放一个老高的斐讯刷机博客，里面可以从斐讯k2知道降级等都可以看到<a href="https://blog.phpgao.com/phicomm_k2.html" target="_blank" rel="external">老高的斐讯k2博客</a><br>。根据教材里面的一步一步来基本就可以解决到breed</p>
+<p>然后在openwrt下下载对应的路由器版本的bin。路由器断电，让网线连接电脑，按住restart键插入电源，大概十秒后。在浏览器输入<code>192.168.1。1</code>就会进入breed界面</p>
+<p><img src="/images/netkeeper/breed_web.png" alt="网上招的breed web界面)"></p>
+<p>就是选中固件更新.然后重启后192.168.1.1就进入了对应的系统登录界面了。<br>一般帐号密码都是<code>root</code>。</p>
+<h2 id="netkeeper拨号器配置"><a href="#netkeeper拨号器配置" class="headerlink" title="netkeeper拨号器配置"></a>netkeeper拨号器配置</h2><h3 id="安装netkeeper的环境"><a href="#安装netkeeper的环境" class="headerlink" title="安装netkeeper的环境"></a>安装netkeeper的环境</h3><p>这里放一个netkeeper-openwrt重邮大神写的github地址<a href="https://github.com/miao1007/Openwrt-NetKeeper" target="_blank" rel="external">https://github.com/miao1007/Openwrt-NetKeeper</a>。<br>里面有详细的说明如何安装netkeeper环境。</p>
+<p>以下为摘录内容具体的看大神的<a href="https://github.com/miao1007/Openwrt-NetKeeper/blob/master/README-CN.md" target="_blank" rel="external">github文档</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">1. 下载最新版插件</div><div class="line"></div><div class="line">sxplugin.so</div><div class="line">confnetwork.sh</div><div class="line">下载后，修改confnetwork.sh中的 pppd_options username password</div><div class="line"></div><div class="line">2. 上传（这里有个坑在下面马上要说）</div><div class="line"></div><div class="line">使用scp(windows下可以使用 WinScp) 上传</div><div class="line"></div><div class="line">yourprovince_sxplugin.so -&gt; /usr/lib/pppd/2.4.7/</div><div class="line">confnetwork.sh -&gt; /tmp/</div><div class="line">3. 配置路由器</div><div class="line"></div><div class="line">登陆路由器，执行脚本</div><div class="line"></div><div class="line">chmod a+x /tmp/confnetwork.sh</div><div class="line">sh /tmp/confnetwork.sh </div><div class="line">最后在浏览器中同步一下路由器时间并重连一下闪讯(netkeeper)</div></pre></td></tr></table></figure></p>
+<p>这里介绍一下这里面的坑。主要是在从其他电脑scp传入openwrt时，他会在后面都加入^M标识，然后当执行脚本的时候就会报错。报错信息如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/tmp$ sh /tmp/confnetwork.sh</div><div class="line">uci: Invalid argument</div><div class="line">uci: Invalid argument</div><div class="line">uci: Parse error</div><div class="line">uci: Invalid argument</div><div class="line">uci: Parse error</div><div class="line">Usage: uci [] []</div><div class="line">......</div></pre></td></tr></table></figure></p>
+<p>解决的办法我这边写两个</p>
+<ul>
+<li>一就是对传入的脚本进行更改去掉每一行后面的<code>^M</code>再试试.</li>
+<li>二就是把脚本的命令行直接打入shell。</li>
+</ul>
+<h3 id="一些问题汇总"><a href="#一些问题汇总" class="headerlink" title="一些问题汇总"></a>一些问题汇总</h3><ul>
+<li>1、由于时间不正确引起的拨号失败.这里的解决方式就是同步时间<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">在界面上填入ntp服务器地址。然后刷新时间（注意要选择utf-8的时间区）香港或者上海时间都行。这里放重邮的ntp服务器</div><div class="line">202.202.43.120</div><div class="line">202.202.43.131</div><div class="line">202.202.43.231</div><div class="line">202.202.43.198</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这里引用了一个重邮学长的博客他里面也是介绍如何进行配置可以参考一下<a href="http://blog.csdn.net/Azure95/article/details/50805849" target="_blank" rel="external">http://blog.csdn.net/Azure95/article/details/50805849</a></p>
+<ul>
+<li>2、配置成功后还是连接不上。这个我选择restart路由器。（不知道为什么需要重启，但是重启之后确实好了<del>~~(&gt;_&lt;)</del>~~）</li>
+<li>3、配置断点重连。这里主要是做网络是否中断，如果中断了重新network restart网络。直接贴代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line">#sleep 100</div><div class="line">DATE=`date +%Y-%m-%d-%H:%M:%S`</div><div class="line">tries=0</div><div class="line">echo --- my_watchdog start ---</div><div class="line">while [[ $tries -lt 5 ]]</div><div class="line">do</div><div class="line">        if /bin/ping -c 1 8.8.8.8 &gt;/dev/null #判断当前网络连接是否正常，如果正常的话就退出，如果不正常循环五次休息1os后</div><div class="line">        then</div><div class="line">                echo --- exit ---</div><div class="line">#               echo $DATE OK &gt;&gt;my_watchdog.log</div><div class="line">                exit 0</div><div class="line">        fi</div><div class="line">        tries=$((tries+1))</div><div class="line">        sleep 10</div><div class="line">#       echo $DATE tries: $tries &gt;&gt;my_watchdog.log</div><div class="line">done</div><div class="line"></div><div class="line">echo $DATE network restart &gt;&gt;my_watchdog.log</div><div class="line">/etc/init.d/network restart</div><div class="line"></div><div class="line">#echo $DATE reboot &gt;&gt;my_watchdog.log</div><div class="line">#reboot</div></pre></td></tr></table></figure>
+<p>这个是我在一个博客中看到的<a href="https://jamesqi.com/%E5%8D%9A%E5%AE%A2/OpenWRT%E8%B7%AF%E7%94%B1%E5%99%A8%E4%B8%AD%E7%9B%91%E6%8E%A7%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1%E5%B9%B6%E9%87%8D%E5%90%AF%E7%9A%84%E8%84%9A%E6%9C%AC" target="_blank" rel="external">博客地址（哈哈太长了就不给出链接url了）。点击就行</a>其实自己也可以写。这就是shell编程。然后还有一步就是加入crontab命令，让他每5分钟执行一次。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ root@Openwrt:~# crontab -e</div><div class="line">然后输入</div><div class="line">*/5 * * * * sh /etc/crontabs/my_wifi_cron.sh #五分钟启动一次</div><div class="line">0 */1 * * * rm -rf /overlay/upper/root/my_watchdog.log #1h启动一次</div><div class="line">0 */1 * * * rm -rf /root/my_watchdog.log #1h启动一次</div><div class="line">0 */12 * * * rm -rf /root/error.log #12h启动一次</div></pre></td></tr></table></figure></p>
+<p>这样就差不多了。</p>
+<h1 id="下面放上一些我觉得我需要的资源"><a href="#下面放上一些我觉得我需要的资源" class="headerlink" title="下面放上一些我觉得我需要的资源"></a>下面放上一些我觉得我需要的资源</h1><ul>
+<li>我的备份配置包就是/etc目录下的文件(我去掉了我的帐号信息)<a href="../../../../files/netkeeper_package/backup-OpenWrt-2017-05-15.tar.gz">下载地址</a></li>
+</ul>
+<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p>这个还是折腾了我很久的。从一开始的害怕，不懂，不敢去尝试。到后面才发现大坑都已经被大神们填了。我只需要沿着他们的脚步走一边，感觉自己还是有点怕事。以后需要改改.<br>这里主要感谢</p>
+<ul>
+<li>苗1007          提供netkeeper算法和编译好的so文件。和开源维护</li>
+<li>老高   提供了斐讯的刷机等教程和开发包（让我们远离了后台监管）</li>
+<li>祁劲松 提供了定时更新的shell脚本（让我知道shell的强大），以前都没好好的用shell</li>
+<li>qingfengtsing 根据苗1007学长的思路跑了一边，还是很有参考价值的</li>
+<li>openwrt项目组  真的openwrt是个好东西，可以完成好多不需要在电脑上完成的工作（我在想以后家里面就自己搭建物联网家庭。还得用到他。）</li>
+<li>和所以我知道的不知道的给我帮助的各位大佬，虽然我的致谢没有实际作用。但是我还是很感谢你们的付出。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://forvoid.me/2017/05/15/配置校园内网netkeeper路由器使用/" data-id="cj2qcf720000m1cvvz6x8vzcb" class="article-share-link">Share</a>
+      
+      
+        <a href="https://forvoid.me/2017/05/15/配置校园内网netkeeper路由器使用/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/netkeeper/">netkeeper</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/10/MySQL数据库安装与配置/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          MySQL数据库安装与配置
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+      </section>
+      
+       
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">Content</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前景介绍"><span class="toc-number">1.</span> <span class="toc-text">前景介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#更新说明"><span class="toc-number">2.</span> <span class="toc-text">更新说明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配置方式"><span class="toc-number">3.</span> <span class="toc-text">配置方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装OpenWRT"><span class="toc-number">3.1.</span> <span class="toc-text">安装OpenWRT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#netkeeper拨号器配置"><span class="toc-number">3.2.</span> <span class="toc-text">netkeeper拨号器配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装netkeeper的环境"><span class="toc-number">3.2.1.</span> <span class="toc-text">安装netkeeper的环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一些问题汇总"><span class="toc-number">3.2.2.</span> <span class="toc-text">一些问题汇总</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#下面放上一些我觉得我需要的资源"><span class="toc-number">4.</span> <span class="toc-text">下面放上一些我觉得我需要的资源</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#致谢"><span class="toc-number">5.</span> <span class="toc-text">致谢</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+    
+
+  
+    
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2017 forvoid&nbsp;|&nbsp;
+      Theme by <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      Contact&nbsp;|&nbsp;172953249@qq.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+
+<script>
+  var disqus_shortname = 'forvoid';
+  
+  var disqus_url = 'https://forvoid.me/2017/05/15/配置校园内网netkeeper路由器使用/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>
