@@ -12,14 +12,15 @@
 <meta property="og:url" content="https://forvoid.me/2017/05/09/Java虚拟机垃圾收集器和内存分配/index.html">
 <meta property="og:site_name" content="forvoid的博客">
 <meta property="og:description" content="串行垃圾回收器串行垃圾回收器 是使用单线程进行垃圾回收的回收器。每次回收时，只有一个工作线程，适用于并行能力弱的计算机。串行回收器专注性和独占性往往有更好的性能表现。">
-<meta property="og:image" content="https://forvoid.me/2017/05/09/images/Java_VM/serialGC.png">
-<meta property="og:image" content="https://forvoid.me/2017/05/09/images/Java_VM/parallelGC.png">
+<meta property="og:image" content="https://forvoid.me/images/Java_VM/serialGC.png">
+<meta property="og:image" content="https://forvoid.me/images/Java_VM/parallelGC.png">
 <meta property="og:image" content="https://forvoid.me/2017/05/09/images/Java_VM/CMS_process.png">
-<meta property="og:updated_time" content="2017-05-15T16:33:14.458Z">
+<meta property="og:image" content="https://forvoid.me/images/Java_VM/G1_work_picture.png">
+<meta property="og:updated_time" content="2017-05-17T03:45:16.132Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java虚拟机垃圾收集器和内存分配">
 <meta name="twitter:description" content="串行垃圾回收器串行垃圾回收器 是使用单线程进行垃圾回收的回收器。每次回收时，只有一个工作线程，适用于并行能力弱的计算机。串行回收器专注性和独占性往往有更好的性能表现。">
-<meta name="twitter:image" content="https://forvoid.me/2017/05/09/images/Java_VM/serialGC.png">
+<meta name="twitter:image" content="https://forvoid.me/images/Java_VM/serialGC.png">
   
     <link rel="alternate" href="/atom.xml" title="forvoid的博客" type="application/atom+xml">
   
@@ -46,7 +47,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://forvoid.me"></form>
@@ -102,7 +103,7 @@
 <li><code>-XX:+UseParNewGC</code>:新生代使用ParNew回收器，老年代是使用串行回收器</li>
 <li><code>-XX:+UseParallelGC</code>:新生代使用ParallelGC回收器，老年代使用串行回收器.</li>
 </ul>
-<p><img src="../images/Java_VM/serialGC.png" alt="串行回收"></p>
+<p><img src="../../../../images/Java_VM/serialGC.png" alt="串行回收"></p>
 <h2 id="新生代串行回收器"><a href="#新生代串行回收器" class="headerlink" title="新生代串行回收器"></a>新生代串行回收器</h2><p>主要有两个特点：</p>
 <ul>
 <li>它仅仅使用单线程进行垃圾回收</li>
@@ -111,7 +112,7 @@
 <p>在串行收集器回收垃圾时，Java应用程序的线程都需要暂停，等待垃圾回收完成。</p>
 <p>新生代串行回收器使用<code>复制算法</code>,在硬件不是很优越的环境中可能性能优于并行回收器和并发回收器</p>
 <h2 id="老年代串行回收器"><a href="#老年代串行回收器" class="headerlink" title="老年代串行回收器"></a>老年代串行回收器</h2><p>老年代串行回收算法是使用的<code>标记压缩算法</code>.它是串行的独占式的垃圾回收器。老年代串行回收器启动，一般STW（Stop-the-world）会更加的长.(可作为CMS回收器的备用回收器)</p>
-<h1 id="并行回收器"><a href="#并行回收器" class="headerlink" title="并行回收器"></a>并行回收器</h1><p>并行回收器在串行的基础上进行了改进，使用了<code>多线程</code>进行垃圾回收。可以缩小垃圾回收所需的实际时间。<br><img src="../images/Java_VM/parallelGC.png" alt="并行回收器"></p>
+<h1 id="并行回收器"><a href="#并行回收器" class="headerlink" title="并行回收器"></a>并行回收器</h1><p>并行回收器在串行的基础上进行了改进，使用了<code>多线程</code>进行垃圾回收。可以缩小垃圾回收所需的实际时间。<br><img src="../../../../images/Java_VM/parallelGC.png" alt="并行回收器"></p>
 <ul>
 <li><code>-XX:+UseParNewGC</code>：新生代使用ParNew回收器，老年代是使用串行回收器</li>
 <li><code>-XX:+UseConcMarkSweepGC</code>:新生代使用ParNew回收器,老年代使用CMS回收器</li>
@@ -136,14 +137,62 @@
 </ul>
 <h1 id="CMS回收器-Concurrent-Mark-Sweep"><a href="#CMS回收器-Concurrent-Mark-Sweep" class="headerlink" title="CMS回收器(Concurrent Mark Sweep)"></a>CMS回收器(Concurrent Mark Sweep)</h1><p>并发标记清理，主要关注系统的停顿时间。使用<code>标记清除算法</code> 同时使用<code>多线程并行</code>的回收垃圾回收器。</p>
 <h2 id="工作步骤"><a href="#工作步骤" class="headerlink" title="工作步骤"></a>工作步骤</h2><p>主要步骤有：<code>初始标记</code>,<code>并发标记</code>,<code>预清理</code>,<code>重新标记</code>,<code>并发清理</code>,<code>并发重置</code>.接下来我画个图说明他们主要工作。<br><img src="../images/Java_VM/CMS_process.png" alt="CMS流程图"><br>在初始标记和重新标记两个部分需要停顿。预处理是并发的，预处理会刻意的等待一次新生代的GC发生后，然后根据历史数据预测下一次的新生代GC可以能发生的时间，在中间时刻进行重新标记，避免新生代GC和重新标记重合，尽量减少一次停顿时间。</p>
-<h2 id="主要配置参数"><a href="#主要配置参数" class="headerlink" title="主要配置参数"></a>主要配置参数</h2><h2 id="日志分析"><a href="#日志分析" class="headerlink" title="日志分析"></a>日志分析</h2><h2 id="清理永久代的Class回收"><a href="#清理永久代的Class回收" class="headerlink" title="清理永久代的Class回收"></a>清理永久代的Class回收</h2>
+<h2 id="主要配置参数"><a href="#主要配置参数" class="headerlink" title="主要配置参数"></a>主要配置参数</h2><ul>
+<li>1、-XX:+UseConcMarkSweepGC.：启用CMS回收器</li>
+<li>2、-XX:ConcGCThreads 和 -XX:ParallelGCThreads 参数手动并发线程设置.自动设置并发线程数量（ParallelGCThreads +3）/4。</li>
+<li>3、-XX:CMSInitiatingOccupancyFraction=[0-100]：指定一个回收的阀值。当<code>老年代</code>到达这个阀值时开始回收.</li>
+<li>4、-XX:+UseCMSCompactAtFullCollection：完成一次CMS后进行一次<code>内存碎片整理</code>。-XX:CMSFullGCsBeforeCompaction=[参数]设定多少次CMS后整理一次内存碎片。</li>
+</ul>
+<h2 id="清理永久代的Class回收"><a href="#清理永久代的Class回收" class="headerlink" title="清理永久代的Class回收"></a>清理永久代的Class回收</h2><p>如果需要清理perm区。必须打开<code>-XX:+CMSClassUnloadingEnabled</code>。默认情况下触发FUll GC 时将回收清理Prem区.</p>
+<h1 id="G1回收器-简要描述-（Garbage-First-Garbage-Collector）"><a href="#G1回收器-简要描述-（Garbage-First-Garbage-Collector）" class="headerlink" title="G1回收器(简要描述)（Garbage First Garbage Collector）"></a>G1回收器(简要描述)（Garbage First Garbage Collector）</h1><p>G1分代：年轻代、老年代 。有eden区和servivor区。也使用了分区的算法。具有以下特性</p>
+<ul>
+<li>并行性</li>
+<li>并发性</li>
+<li>分代GC</li>
+<li>空间整理</li>
+<li>可预见性。</li>
+</ul>
+<h2 id="G1内存划分和主要收集过程"><a href="#G1内存划分和主要收集过程" class="headerlink" title="G1内存划分和主要收集过程"></a>G1内存划分和主要收集过程</h2><p>G1回收器将堆分区。每次只收集其中几个区域。目的是控制停顿时间</p>
+<p>收集分为4个阶段</p>
+<ul>
+<li>新生代GC</li>
+<li>并发标记周期</li>
+<li>混合收集</li>
+<li>视情况进行FUll GC</li>
+</ul>
+<h3 id="新生代GC"><a href="#新生代GC" class="headerlink" title="新生代GC"></a>新生代GC</h3><p>如果eden区被沾满的话就会启动</p>
+<h3 id="G1并发标记周期"><a href="#G1并发标记周期" class="headerlink" title="G1并发标记周期"></a>G1并发标记周期</h3><p>为了降低一次标记的停顿时间，类似于CMS</p>
+<p>分为以下几个方面</p>
+<ul>
+<li>初始标记：伴随一次新生代GC，新生代eden区被清空</li>
+<li>根区域扫描：扫描由servivor区直接可达的老年代区域</li>
+<li>并发标记</li>
+<li>重新标记：采用STAB（Snapshot-At-The-Beginning）算法，为存活对象创建一个快照。</li>
+<li>独占清理：计算存活比例排序。确定混合回收区域。</li>
+<li>并发清理：识别并清理完全空闲的区域。</li>
+</ul>
+<p><img src="../../../../images/Java_VM/G1_work_picture.png" alt="G1并发标记主要流程"></p>
+<h4 id="混合回收"><a href="#混合回收" class="headerlink" title="混合回收"></a>混合回收</h4><p>在并发标记阶段有一部分对象被回收。但是比例比较小。但是明确的知道了那些区域的垃圾比较多，混合回收就可以专门针对这些区域进行垃圾回收。</p>
+<p>这个阶段会执行正常的新生代GC，也会选取一些被标记的老年代区域进行回收（然后存活的对象将被移到别的区域）。减少垃圾回收</p>
+<h3 id="当内存足时Full-GC"><a href="#当内存足时Full-GC" class="headerlink" title="当内存足时Full GC"></a>当内存足时Full GC</h3><p>在混合Gc时发生空间不住或者新生代GCsurvivor区和老年代无法容纳幸存对象时也会导致Full GC。</p>
+<h2 id="G1相关参数"><a href="#G1相关参数" class="headerlink" title="G1相关参数"></a>G1相关参数</h2><ul>
+<li>-XX:+UseG1GC:打开G1收集器</li>
+<li>-XX:MaxGCPauseMillis:指定目标最大停顿。（用于调优）</li>
+<li>-XX:ParallelGcThreads:设置并行回收时的线程数.<h1 id="有关对象内存分配和回收的问题"><a href="#有关对象内存分配和回收的问题" class="headerlink" title="有关对象内存分配和回收的问题"></a>有关对象内存分配和回收的问题</h1><h2 id="禁用System-GC"><a href="#禁用System-GC" class="headerlink" title="禁用System.GC()"></a>禁用System.GC()</h2>System.GC()会显示的直接触发 Full GC对老年代和新生代进行回收。（finalize还会的线程中的对象进行回收）<br><code>-XX:+DisableExplicitGC</code>使system.gc是一个空函数，默认不使用。</li>
+</ul>
+<p>默认使用System.GC()他会使用传统的Full GC而不是优化过后的回收器。</p>
+<h2 id="对象何时进入老年代"><a href="#对象何时进入老年代" class="headerlink" title="对象何时进入老年代"></a>对象何时进入老年代</h2><ul>
+<li>每次新生代回收时都会给每个对象的年龄加1.当到达一定年龄还没死。就会进入老年代。控制参数<code>MaxTenuringThreshold</code>默认为15.</li>
+<li>大对象进入老年代。大对象可以直接晋升到老年代（因为eden区或者servivor无法容纳对象）。控制参数<code>PretenureSizeThreshold</code>设置对象直接晋升到老年代的阀值。</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://forvoid.me/2017/05/09/Java虚拟机垃圾收集器和内存分配/" data-id="cj2qcf70f00001cvv65fkpxuy" class="article-share-link">Share</a>
+      <a data-url="https://forvoid.me/2017/05/09/Java虚拟机垃圾收集器和内存分配/" data-id="cj2rcqhgd00067cvv2w5mgah8" class="article-share-link">分享</a>
       
       
-        <a href="https://forvoid.me/2017/05/09/Java虚拟机垃圾收集器和内存分配/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="https://forvoid.me/2017/05/09/Java虚拟机垃圾收集器和内存分配/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javaVM/">javaVM</a></li></ul>
@@ -155,7 +204,7 @@
 <nav id="article-nav">
   
     <a href="/2017/05/08/Java虚拟机垃圾回收概念和算法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
           Java虚拟机垃圾回收概念和算法
@@ -165,7 +214,7 @@
   
   
     <a href="/2017/05/10/MySQL数据库安装与配置/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">MySQL数据库安装与配置</div>
     </a>
   
@@ -204,9 +253,9 @@
     
       <div class="widget" id="toc-widget-fixed">
       
-        <strong class="toc-title">Content</strong>
+        <strong class="toc-title">文章目录</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#串行垃圾回收器"><span class="toc-number">1.</span> <span class="toc-text">串行垃圾回收器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#新生代串行回收器"><span class="toc-number">1.1.</span> <span class="toc-text">新生代串行回收器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#老年代串行回收器"><span class="toc-number">1.2.</span> <span class="toc-text">老年代串行回收器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#并行回收器"><span class="toc-number">2.</span> <span class="toc-text">并行回收器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#新生代ParNew回收器"><span class="toc-number">2.1.</span> <span class="toc-text">新生代ParNew回收器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新生代ParallelGC回收器"><span class="toc-number">2.2.</span> <span class="toc-text">新生代ParallelGC回收器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#老年代ParallelOldGC回收器"><span class="toc-number">2.3.</span> <span class="toc-text">老年代ParallelOldGC回收器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CMS回收器-Concurrent-Mark-Sweep"><span class="toc-number">3.</span> <span class="toc-text">CMS回收器(Concurrent Mark Sweep)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#工作步骤"><span class="toc-number">3.1.</span> <span class="toc-text">工作步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主要配置参数"><span class="toc-number">3.2.</span> <span class="toc-text">主要配置参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#日志分析"><span class="toc-number">3.3.</span> <span class="toc-text">日志分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#清理永久代的Class回收"><span class="toc-number">3.4.</span> <span class="toc-text">清理永久代的Class回收</span></a></li></ol></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#串行垃圾回收器"><span class="toc-number">1.</span> <span class="toc-text">串行垃圾回收器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#新生代串行回收器"><span class="toc-number">1.1.</span> <span class="toc-text">新生代串行回收器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#老年代串行回收器"><span class="toc-number">1.2.</span> <span class="toc-text">老年代串行回收器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#并行回收器"><span class="toc-number">2.</span> <span class="toc-text">并行回收器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#新生代ParNew回收器"><span class="toc-number">2.1.</span> <span class="toc-text">新生代ParNew回收器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新生代ParallelGC回收器"><span class="toc-number">2.2.</span> <span class="toc-text">新生代ParallelGC回收器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#老年代ParallelOldGC回收器"><span class="toc-number">2.3.</span> <span class="toc-text">老年代ParallelOldGC回收器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CMS回收器-Concurrent-Mark-Sweep"><span class="toc-number">3.</span> <span class="toc-text">CMS回收器(Concurrent Mark Sweep)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#工作步骤"><span class="toc-number">3.1.</span> <span class="toc-text">工作步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主要配置参数"><span class="toc-number">3.2.</span> <span class="toc-text">主要配置参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#清理永久代的Class回收"><span class="toc-number">3.3.</span> <span class="toc-text">清理永久代的Class回收</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#G1回收器-简要描述-（Garbage-First-Garbage-Collector）"><span class="toc-number">4.</span> <span class="toc-text">G1回收器(简要描述)（Garbage First Garbage Collector）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#G1内存划分和主要收集过程"><span class="toc-number">4.1.</span> <span class="toc-text">G1内存划分和主要收集过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#新生代GC"><span class="toc-number">4.1.1.</span> <span class="toc-text">新生代GC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#G1并发标记周期"><span class="toc-number">4.1.2.</span> <span class="toc-text">G1并发标记周期</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#混合回收"><span class="toc-number">4.1.2.1.</span> <span class="toc-text">混合回收</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#当内存足时Full-GC"><span class="toc-number">4.1.3.</span> <span class="toc-text">当内存足时Full GC</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#G1相关参数"><span class="toc-number">4.2.</span> <span class="toc-text">G1相关参数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#有关对象内存分配和回收的问题"><span class="toc-number">5.</span> <span class="toc-text">有关对象内存分配和回收的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#禁用System-GC"><span class="toc-number">5.1.</span> <span class="toc-text">禁用System.GC()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对象何时进入老年代"><span class="toc-number">5.2.</span> <span class="toc-text">对象何时进入老年代</span></a></li></ol></li></ol>
           </div>
       </div>
     </div>
@@ -237,10 +286,10 @@
   <div class="outer">
     <div id="footer-left">
       &copy; 2014 - 2017 forvoid&nbsp;|&nbsp;
-      Theme by <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
     </div>
      <div id="footer-right">
-      Contact&nbsp;|&nbsp;172953249@qq.com
+      联系方式&nbsp;|&nbsp;172953249@qq.com
     </div>
   </div>
 </footer>
