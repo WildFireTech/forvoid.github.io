@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>程序设计原则（六个） | forvoid的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="设计模式是一套面向对象设计的经验总结，使用设计模式是为了 代码的可重用性,可靠性和可被他人理解。">
+<meta name="keywords" content="设计模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="程序设计原则（六个）">
+<meta property="og:url" content="https://forvoid.me/2017/05/23/程序设计原则（六个）/index.html">
+<meta property="og:site_name" content="forvoid的博客">
+<meta property="og:description" content="设计模式是一套面向对象设计的经验总结，使用设计模式是为了 代码的可重用性,可靠性和可被他人理解。">
+<meta property="og:updated_time" content="2017-05-23T11:16:16.001Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="程序设计原则（六个）">
+<meta name="twitter:description" content="设计模式是一套面向对象设计的经验总结，使用设计模式是为了 代码的可重用性,可靠性和可被他人理解。">
+  
+    <link rel="alternate" href="/atom.xml" title="forvoid的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://forvoid.me"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">forvoid的博客</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-程序设计原则（六个）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/23/程序设计原则（六个）/" class="article-date">
+  <time datetime="2017-05-23T10:16:18.000Z" itemprop="datePublished">2017-05-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      程序设计原则（六个）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>设计模式是一套面向对象设计的经验总结，使用设计模式是为了 代码的<code>可重用性</code>,<code>可靠性</code>和可被他人理解。<br><a id="more"></a></p>
+<h2 id="单一职能原则"><a href="#单一职能原则" class="headerlink" title="单一职能原则"></a>单一职能原则</h2><p>定义：对于一个类，应该只有一个能引起它变化的原因。</p>
+<p>为什么类应该满足单一职责原则：</p>
+<ul>
+<li>1、易于维护，</li>
+<li>2、高度的可复用性。</li>
+</ul>
+<p>如果一个类的职责过多的话，就等同于将这些职责都耦合起来。单一职责降低了类的复杂度，逻辑更加的清除简单，提高了类的可读性，和系统的维护便捷。</p>
+<h2 id="里氏代换"><a href="#里氏代换" class="headerlink" title="里氏代换"></a>里氏代换</h2><p>定义： 子类型必须能够替换掉他的父类型。</p>
+<p>如果子类继承了父类 那么子类就可以以父类的身份出现，（把父类能完成的事情子类也能完成）。</p>
+<p>里氏代换是对现实抽象化的具体步骤的规范。</p>
+<h2 id="开放-封闭原则（所有设计模式的核心）"><a href="#开放-封闭原则（所有设计模式的核心）" class="headerlink" title="开放-封闭原则（所有设计模式的核心）"></a>开放-封闭原则（所有设计模式的核心）</h2><p>定义： 程序的实体对象（模块、类、函数等），应该可以进行扩展，但不可以修改。</p>
+<p>就是说对外开发固定的接口调用，对外封闭对方法、模块的实现过程。<code>对扩展开放</code>、<code>对修改封闭</code>。</p>
+<p>面对变化增加代码而不是修改代码。</p>
+<p>开放-封闭原则的核心思想是面向抽象编程而不是面向具体编程，因为抽象往往是相对稳定的，具体的业务代码一般都会有更改。</p>
+<p>如果做不到完全的封闭，那我们就应该对哪些变化进行封闭、对哪些变化进行隔离做出选择。</p>
+<h2 id="依赖倒转原则"><a href="#依赖倒转原则" class="headerlink" title="依赖倒转原则"></a>依赖倒转原则</h2><p>定义： 程序的高层模块不应该依赖于底层模块，两者应该依赖于抽象；抽象不应该依赖于具体细节，具体细节也不应该依赖于抽象。（面向<code>接口</code>编程，而不是面向<code>实现</code>编程）</p>
+<p>本质：通过抽象使各个类或者模块的实现彼此独立，互补影响，从而实现模块松耦合。记录一下规范：</p>
+<ul>
+<li>每个类尽量都继承自接口或者抽象类，或两个。</li>
+<li>变量的显示类型尽量是接口或者抽象类</li>
+<li>类尽量避免从具体的类中派生。</li>
+<li>尽量不要<code>覆盖</code>(overrider)基类的方法</li>
+</ul>
+<h2 id="合成-聚合复用原则"><a href="#合成-聚合复用原则" class="headerlink" title="合成/聚合复用原则"></a>合成/聚合复用原则</h2><p>定义：尽量不要用类继承，而尽量使用合成/聚合。</p>
+<p>聚合表示<code>弱</code>的拥有关系，</p>
+<p>合成表示一种比较强的拥有关系，体现严格的整体部分关系。</p>
+<h3 id="优缺点："><a href="#优缺点：" class="headerlink" title="优缺点："></a>优缺点：</h3><p>优点：</p>
+<ul>
+<li>新的对象存取子对象的唯一方法是通过子对象的接口</li>
+<li>复用是黑箱复用（子对象的内部细节无法观察）</li>
+<li>更好的支持封装的特性</li>
+<li>复用实现上的相互依赖是比较小的。</li>
+<li>每个新的类都可以将焦点集中在一个任务之上。</li>
+<li>可以运用到任何应用环境中。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>系统会有较多的对象需要管理。</li>
+</ul>
+<h2 id="迪米特法则"><a href="#迪米特法则" class="headerlink" title="迪米特法则"></a>迪米特法则</h2><p>定义：如果两个类之间不必直接通信，则这两个类不应该发生直接的相互作用。如果其中一个类需要调用另一个类的方法，可以通过第三方转发。</p>
+<p>类的结构设计上，每一个类都要尽量降低成员的访问权限。不需要让别人知道的就不要暴露出来（不和陌生人说话–wuwu）。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>每个设计法则都是一个思想上的程序设计指导的方案，我觉得这六个法则都一定的道理，主要他们完成的就是如何更加简单的维护系统、更改代码的影响最小，还有就是我们如何去更好的理解，一些设计模式啊，别人设计的思想。这都很重要。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://forvoid.me/2017/05/23/程序设计原则（六个）/" data-id="cj31gtkni0010lcvvuhchtzoh" class="article-share-link">分享</a>
+      
+      
+        <a href="https://forvoid.me/2017/05/23/程序设计原则（六个）/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/22/散列（Hash）的计算原理和解决冲突/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          散列（Hash）的计算原理和解决冲突
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+      </section>
+      
+       
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#单一职能原则"><span class="toc-number">1.</span> <span class="toc-text">单一职能原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#里氏代换"><span class="toc-number">2.</span> <span class="toc-text">里氏代换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开放-封闭原则（所有设计模式的核心）"><span class="toc-number">3.</span> <span class="toc-text">开放-封闭原则（所有设计模式的核心）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#依赖倒转原则"><span class="toc-number">4.</span> <span class="toc-text">依赖倒转原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#合成-聚合复用原则"><span class="toc-number">5.</span> <span class="toc-text">合成/聚合复用原则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优缺点："><span class="toc-number">5.1.</span> <span class="toc-text">优缺点：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#迪米特法则"><span class="toc-number">6.</span> <span class="toc-text">迪米特法则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">7.</span> <span class="toc-text">总结</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+    
+
+  
+    
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2017 forvoid&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;172953249@qq.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+
+<script>
+  var disqus_shortname = 'forvoid';
+  
+  var disqus_url = 'https://forvoid.me/2017/05/23/程序设计原则（六个）/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>
