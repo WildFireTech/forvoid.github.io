@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>tomcat入门学习笔记（启动安装） | forvoid的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="tomcat是我学习java ee开发以来的一个动态web服务器，从最开始使用他的时候是在大一的课程上面，后来又是在水电气项目上面运用到了tomcat服务器。一直都没时间去好好的学习它，这次我买了《tomcat权威指南第二版（6.0）》好好的去学习一下tomcat，之前很多项目在部署的时候出现很多问题。都不知道怎么去解决。这次好好的学习应该有很大的收获。">
+<meta name="keywords" content="tomcat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tomcat入门学习笔记（启动安装）">
+<meta property="og:url" content="https://forvoid.me/2016/05/25/tomcat入门学习笔记（启动安装）/index.html">
+<meta property="og:site_name" content="forvoid的博客">
+<meta property="og:description" content="tomcat是我学习java ee开发以来的一个动态web服务器，从最开始使用他的时候是在大一的课程上面，后来又是在水电气项目上面运用到了tomcat服务器。一直都没时间去好好的学习它，这次我买了《tomcat权威指南第二版（6.0）》好好的去学习一下tomcat，之前很多项目在部署的时候出现很多问题。都不知道怎么去解决。这次好好的学习应该有很大的收获。">
+<meta property="og:updated_time" content="2017-05-25T16:27:50.682Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="tomcat入门学习笔记（启动安装）">
+<meta name="twitter:description" content="tomcat是我学习java ee开发以来的一个动态web服务器，从最开始使用他的时候是在大一的课程上面，后来又是在水电气项目上面运用到了tomcat服务器。一直都没时间去好好的学习它，这次我买了《tomcat权威指南第二版（6.0）》好好的去学习一下tomcat，之前很多项目在部署的时候出现很多问题。都不知道怎么去解决。这次好好的学习应该有很大的收获。">
+  
+    <link rel="alternate" href="/atom.xml" title="forvoid的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://forvoid.me"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">forvoid的博客</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-tomcat入门学习笔记（启动安装）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/25/tomcat入门学习笔记（启动安装）/" class="article-date">
+  <time datetime="2016-05-25T13:31:41.000Z" itemprop="datePublished">2016-05-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      tomcat入门学习笔记（启动安装）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>tomcat是我学习java ee开发以来的一个动态web服务器，从最开始使用他的时候是在大一的课程上面，后来又是在水电气项目上面运用到了tomcat服务器。一直都没时间去好好的学习它，这次我买了《tomcat权威指南第二版（6.0）》好好的去学习一下tomcat，之前很多项目在部署的时候出现很多问题。都不知道怎么去解决。这次好好的学习应该有很大的收获。<br><a id="more"></a></p>
+<h2 id="tomcat简介"><a href="#tomcat简介" class="headerlink" title="tomcat简介"></a>tomcat简介</h2><p>tomcat是sun公司的一个java servlet container（容器）.是由James Duncan Davidson编写的。后面交给了apache基金会去维护。是GlassFish Java EE的一种新的参考实现。 是用java语言编写的web服务器。</p>
+<h2 id="tomcat的安装"><a href="#tomcat的安装" class="headerlink" title="tomcat的安装"></a>tomcat的安装</h2><p>这里我大概只说一下用二进制包的方式安装。基本上就是把tomcat的二进制包下载好。不需要安装，在（使用1-1024端口的情况下使用root用户（如果是linux））运行包bin下的启动脚本就可以启动tomcat了。</p>
+<h3 id="tomcat的前提条件"><a href="#tomcat的前提条件" class="headerlink" title="tomcat的前提条件"></a>tomcat的前提条件</h3><p>必须已经配置好了Java的运行环境（JRE）。</p>
+<h2 id="tomcat的启动、停止、重启。"><a href="#tomcat的启动、停止、重启。" class="headerlink" title="tomcat的启动、停止、重启。"></a>tomcat的启动、停止、重启。</h2><h3 id="了解bin中的脚本"><a href="#了解bin中的脚本" class="headerlink" title="了解bin中的脚本"></a>了解bin中的脚本</h3><table>
+<thead>
+<tr>
+<th>脚本</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Catalina</td>
+<td>Tomcat的主要脚本，执行java命令以调用tomcat的启动与停止类</td>
+</tr>
+<tr>
+<td>cpappend</td>
+<td>用于windows系统内部，将项目路径追加到tomcat的classpath环境变量中（现在没了1.8 1.9）</td>
+</tr>
+<tr>
+<td>digest</td>
+<td>生成tomcat密码的摘要值，用于产生加密过后的密码</td>
+</tr>
+<tr>
+<td>service</td>
+<td>该脚本以windows服务方式安装和卸载tomcat（废弃了没了）</td>
+</tr>
+<tr>
+<td>setcalsspath</td>
+<td>设定tomcat的classpath和其他环境变量的脚本。</td>
+</tr>
+<tr>
+<td>shutdown</td>
+<td>运行 catalina stop 停止tomcat</td>
+</tr>
+<tr>
+<td>startup</td>
+<td>运行 catalina start 开始tomcat</td>
+</tr>
+<tr>
+<td>tool-wrapper</td>
+<td>用于digest脚本系统内部，用于封装可用与设置环境变量的脚本，并调用classpath中设置的完全符合限定的主要方法</td>
+</tr>
+<tr>
+<td>version</td>
+<td>运行catalina的版本，输出版本信息</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">//这个是用digest脚本生成的密码的方式 md5 md2 sha </div><div class="line">D:\apache-tomcat-9.0.0.M17\bin&gt;digest.bat -a md5 tao</div><div class="line">tao:4eb26038908bb3fc90b36c419593db3391abd242ce0218ee84b14619c1ed62b9$1$9234c361964a73e22923748e301b7e10</div><div class="line">//输入version后的输出</div><div class="line">Using CATALINA_BASE:   &quot;D:\apache-tomcat-9.0.0.M17&quot;</div><div class="line">Using CATALINA_HOME:   &quot;D:\apache-tomcat-9.0.0.M17&quot;</div><div class="line">Using CATALINA_TMPDIR: &quot;D:\apache-tomcat-9.0.0.M17\temp&quot;</div><div class="line">Using JRE_HOME:        &quot;C:\Program Files\Java\jdk1.8.0_121&quot;</div><div class="line">Using CLASSPATH:       &quot;D:\apache-tomcat-9.0.0.M17\bin\bootstrap.jar;D:\apache-tomcat-9.0.0.M17\bin\tomcat-juli.jar&quot;</div><div class="line">Server version: Apache Tomcat/9.0.0.M17</div><div class="line">Server built:   Jan 10 2017 20:59:20 UTC</div><div class="line">Server number:  9.0.0.0</div><div class="line">OS Name:        Windows 10</div><div class="line">OS Version:     10.0</div><div class="line">Architecture:   amd64</div><div class="line">JVM Version:    1.8.0_121-b13</div><div class="line">JVM Vendor:     Oracle Corporation</div></pre></td></tr></table></figure>
+<h3 id="了解catalina脚本的使用"><a href="#了解catalina脚本的使用" class="headerlink" title="了解catalina脚本的使用"></a>了解catalina脚本的使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">commands:</div><div class="line">  debug             Start Catalina in a debugger</div><div class="line">  debug -security   Debug Catalina with a security manager</div><div class="line">  jpda start        Start Catalina under JPDA debugger</div><div class="line">  run               Start Catalina in the current window</div><div class="line">  run -security     Start in the current window with security manager</div><div class="line">  start             Start Catalina in a separate window</div><div class="line">  start -security   Start in a separate window with security manager</div><div class="line">  stop              Stop Catalina</div><div class="line">  configtest        Run a basic syntax check on server.xml</div><div class="line">  version           What version of tomcat are you running?</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-config [server.xml]</td>
+<td>指定server.xml配置文件</td>
+</tr>
+<tr>
+<td>-help</td>
+<td>帮助</td>
+</tr>
+<tr>
+<td>-nonaming</td>
+<td>停用tomcat中停用JNDI </td>
+</tr>
+<tr>
+<td>-security</td>
+<td>启用catalina.policy文件</td>
+</tr>
+<tr>
+<td>debug</td>
+<td>调用模式启动tomcat</td>
+</tr>
+<tr>
+<td>jpda start</td>
+<td>以jpda调试器启动tomcat</td>
+</tr>
+<tr>
+<td>run</td>
+<td><code>启动tomcat 但不会重定向标准输出与错误</code></td>
+</tr>
+<tr>
+<td>start</td>
+<td><code>启动tomcat 但会重定向标准输出与错误到tomcat的日志文件中 logs/catalina.out</code></td>
+</tr>
+<tr>
+<td>stop</td>
+<td>停止tomcat</td>
+</tr>
+<tr>
+<td>version</td>
+<td>输出tomcat版本信息</td>
+</tr>
+</tbody>
+</table>
+<h3 id="常规的启动"><a href="#常规的启动" class="headerlink" title="常规的启动"></a>常规的启动</h3><p>bin/startup.sh</p>
+<h3 id="常规关闭"><a href="#常规关闭" class="headerlink" title="常规关闭"></a>常规关闭</h3><p>bin/shutdown.sh</p>
+<h2 id="为什么tomcat没有重启的脚本"><a href="#为什么tomcat没有重启的脚本" class="headerlink" title="为什么tomcat没有重启的脚本"></a>为什么tomcat没有重启的脚本</h2><p>主要原因是：确认tomcat是否正常关闭是比较困难。<br>下面列出tomcat的关闭是不可靠的理由：</p>
+<ul>
+<li>Java Servlet Speclification并没有强制规定java Servlet需要多长时间完成其工作，（tomcat有时间限制），但是会拖慢tomcat关闭</li>
+<li>tomcat在关闭前 servlet container必须在servlet服务结束前等待每个servlet完成所有还在进行的请求。</li>
+<li>Java虚拟机以多线程的方式进行处理，所以无法判断java的时间时长，还会有<code>线程阻塞</code>和<code>滞留阻塞</code>。java项目自己无法判断tomcat是否停止 （必须使用第三方语言来判断）</li>
+<li>tomcat所有线程都停止时，servlet还会衍生出阻止vm退出的线程。（尽可能不用System.exit(0)）。</li>
+<li>在安全管理器的允许下，有可能tomcat创建出来的线程有可能优先级比tomcat本身要高（这就很尴尬了…）</li>
+<li><code>如果tomcat完全内存溢出</code>（Permgen memory）,那么他在关闭端口或web端口上就无法接受新的连接。（可以设定必须没有它大）。</li>
+</ul>
+<h2 id="如何对tomcat进行重启"><a href="#如何对tomcat进行重启" class="headerlink" title="如何对tomcat进行重启"></a>如何对tomcat进行重启</h2><p>下面进行tomcat重启操作（linux）</p>
+<ul>
+<li>1、bin/shutdown.sh</li>
+<li>2、等待几秒后，jps查看是否还有Bootstrap 进程</li>
+<li>3、kill -term 进程id 告诉jvm结束该进程</li>
+<li>3、 kill -kill 进程id 告诉系统介绍该进程</li>
+<li>4、确定tomcat不再处于运行状态 bin/startup.sh</li>
+</ul>
+<h2 id="tomcat的环境变量"><a href="#tomcat的环境变量" class="headerlink" title="tomcat的环境变量"></a>tomcat的环境变量</h2><p>大概写一下，不懂的以后百度吧。<br>CATALINA_BASE(整个基本目录）<br>CATALINA_HOME(静态部分基本目录)<br>CATALINA_OPTS(传给java的命令)<br>CATALINA_TMPDIR(设定tomcat临时文件夹)<br>CATALINA_PID（保存进程id号）<br>JAVA_HOME<br>JAVA_JRE<br>JPDA_TRANSPORT(dt_socket)<br>JPDA_ADDRESS<br>JSSE_HOME</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://forvoid.me/2016/05/25/tomcat入门学习笔记（启动安装）/" data-id="cj34gjfom000b10vvdpi24owp" class="article-share-link">分享</a>
+      
+      
+        <a href="https://forvoid.me/2016/05/25/tomcat入门学习笔记（启动安装）/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tomcat/">tomcat</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/06/21/第一次建立个人github博客的体会/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">第一次建立个人github博客的体会</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+      </section>
+      
+       
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#tomcat简介"><span class="toc-number">1.</span> <span class="toc-text">tomcat简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tomcat的安装"><span class="toc-number">2.</span> <span class="toc-text">tomcat的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tomcat的前提条件"><span class="toc-number">2.1.</span> <span class="toc-text">tomcat的前提条件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tomcat的启动、停止、重启。"><span class="toc-number">3.</span> <span class="toc-text">tomcat的启动、停止、重启。</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#了解bin中的脚本"><span class="toc-number">3.1.</span> <span class="toc-text">了解bin中的脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#了解catalina脚本的使用"><span class="toc-number">3.2.</span> <span class="toc-text">了解catalina脚本的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常规的启动"><span class="toc-number">3.3.</span> <span class="toc-text">常规的启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常规关闭"><span class="toc-number">3.4.</span> <span class="toc-text">常规关闭</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么tomcat没有重启的脚本"><span class="toc-number">4.</span> <span class="toc-text">为什么tomcat没有重启的脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何对tomcat进行重启"><span class="toc-number">5.</span> <span class="toc-text">如何对tomcat进行重启</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tomcat的环境变量"><span class="toc-number">6.</span> <span class="toc-text">tomcat的环境变量</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+    
+
+  
+    
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2017 forvoid&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;172953249@qq.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+
+<script>
+  var disqus_shortname = 'forvoid';
+  
+  var disqus_url = 'https://forvoid.me/2016/05/25/tomcat入门学习笔记（启动安装）/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>

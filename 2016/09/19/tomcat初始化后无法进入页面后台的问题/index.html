@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://forvoid.me/2016/09/19/tomcat初始化后无法进入页面后台的问题/index.html">
 <meta property="og:site_name" content="forvoid的博客">
 <meta property="og:description" content="问题描述今天为了搭建一个gitbucket服务端，我又下载了tomcat8.tar.gz数据包进行安装，在解压玩成之后，我需要用界面登录tomcat服务器放入gitbucket.war但是需要我配置tomcat中的tomcat-users.xml信息给定一定的账户和密码才能进入后台。我安照网上的要求配置后和我以前的一些经历一样。无论怎么重新启动都无法进入host/manager这个页面。">
-<meta property="og:updated_time" content="2016-09-27T16:17:15.824Z">
+<meta property="og:updated_time" content="2017-05-25T13:44:45.181Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tomcat初始化后无法进入页面后台的问题">
 <meta name="twitter:description" content="问题描述今天为了搭建一个gitbucket服务端，我又下载了tomcat8.tar.gz数据包进行安装，在解压玩成之后，我需要用界面登录tomcat服务器放入gitbucket.war但是需要我配置tomcat中的tomcat-users.xml信息给定一定的账户和密码才能进入后台。我安照网上的要求配置后和我以前的一些经历一样。无论怎么重新启动都无法进入host/manager这个页面。">
@@ -42,7 +42,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://forvoid.me"></form>
@@ -96,10 +96,21 @@
       
         <!-- Table of Contents -->
         
-        <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>今天为了搭建一个gitbucket服务端，我又下载了tomcat8.tar.gz数据包进行安装，在解压玩成之后，我需要用界面登录tomcat服务器放入gitbucket.war但是需要我配置tomcat中的<code>tomcat-users.xml</code>信息给定一定的账户和密码才能进入后台。我安照网上的要求配置后和我以前的一些经历一样。无论怎么重新启动都无法进入<code>host/manager</code>这个页面。<br><a id="more"></a></p>
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>今天为了搭建一个gitbucket服务端，我又下载了tomcat8.tar.gz数据包进行安装，在解压玩成之后，我需要用界面登录tomcat服务器放入gitbucket.war但是需要我配置tomcat中的<code>tomcat-users.xml</code>信息给定一定的账户和密码才能进入后台。我安照网上的要求配置后和我以前的一些经历一样。无论怎么重新启动都无法进入<code>host/manager</code>这个页面。<br><a id="more"></a></p>
+<h1 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h1><ul>
+<li>2017.5.25 把第二个方法更新了一下，下面那个第二个方法不是绝对的正确</li>
+</ul>
 <h1 id="问题解决方式"><a href="#问题解决方式" class="headerlink" title="问题解决方式"></a>问题解决方式</h1><h2 id="第一、我需要结局给tomcat-users-xml给定帐号密码的值"><a href="#第一、我需要结局给tomcat-users-xml给定帐号密码的值" class="headerlink" title="第一、我需要结局给tomcat-users.xml给定帐号密码的值"></a>第一、我需要结局给<code>tomcat-users.xml</code>给定帐号密码的值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;role rolename=&quot;manager-gui&quot;/&gt;</div><div class="line"></div><div class="line">&lt;user username=&quot;tomcat&quot; password=&quot;tomcat&quot; roles=&quot;manager-gui&quot;/&gt;</div></pre></td></tr></table></figure>
 <p>角色只需要manager-gui这个角色就可以了，在网页信息中也有显示。</p>
-<h2 id="第二个问题是我需要让我进入那个登录验证的页面。"><a href="#第二个问题是我需要让我进入那个登录验证的页面。" class="headerlink" title="第二个问题是我需要让我进入那个登录验证的页面。"></a>第二个问题是我需要让我进入那个登录验证的页面。</h2><p>这就是我在查看<code>http://www.cnblogs.com/dawugui5460/articles/4164124.html</code>这位大神的博客中看到的。说进入不了页面的原因是因为tomcat的安装包中没有提供manager.xml这个文件。有些版本的tomcat无法启动管理界面。<br>解决方法：</p>
+<h2 id="第二远程登录tomcat管理页面"><a href="#第二远程登录tomcat管理页面" class="headerlink" title="第二远程登录tomcat管理页面"></a>第二远程登录tomcat管理页面</h2><p>这个是是因为管理页面是在webapps项目包下面的manager项目中的。我们需要在manager项目中去配置运行远程的访问。</p>
+<ul>
+<li>1 找到webapps/manager项目</li>
+<li>2 进入项目中的MATE-INF</li>
+<li>3 打开context.xml </li>
+<li>4 注释掉判断访问ip的那一段代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;Context antiResourceLocking=&quot;false&quot; privileged=&quot;true&quot; &gt;</div><div class="line">&lt;!--注释掉下面的这一段代码--&gt;</div><div class="line">  &lt;Valve className=&quot;org.apache.catalina.valves.RemoteAddrValve&quot;</div><div class="line">         allow=&quot;127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1&quot; /&gt;</div><div class="line">&lt;/Context&gt;</div></pre></td></tr></table></figure>
+<h2 id="第二个问题是我需要让我进入那个登录验证的页面。-错误的）"><a href="#第二个问题是我需要让我进入那个登录验证的页面。-错误的）" class="headerlink" title="第二个问题是我需要让我进入那个登录验证的页面。(错误的）"></a><del>第二个问题是我需要让我进入那个登录验证的页面。</del>(错误的）</h2><p>这就是我在查看<code>http://www.cnblogs.com/dawugui5460/articles/4164124.html</code>这位大神的博客中看到的。说进入不了页面的原因是因为tomcat的安装包中没有提供manager.xml这个文件。有些版本的tomcat无法启动管理界面。<br>解决方法：</p>
 <ul>
 <li>查看是否存在<code>conf/Catalina/localhost/manager.xml</code>这个文件夹，</li>
 <li><p>如果没有的话就创建并且填入值</p>
@@ -112,10 +123,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://forvoid.me/2016/09/19/tomcat初始化后无法进入页面后台的问题/" data-id="cj32sqxf4000c20vvzy08enqp" class="article-share-link">Share</a>
+      <a data-url="https://forvoid.me/2016/09/19/tomcat初始化后无法进入页面后台的问题/" data-id="cj34gjfop000e10vvy6xbomsi" class="article-share-link">分享</a>
       
       
-        <a href="https://forvoid.me/2016/09/19/tomcat初始化后无法进入页面后台的问题/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="https://forvoid.me/2016/09/19/tomcat初始化后无法进入页面后台的问题/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bug/">bug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tomcat/">tomcat</a></li></ul>
@@ -127,7 +138,7 @@
 <nav id="article-nav">
   
     <a href="/2016/06/25/对程序员的一些理性的思考/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
           对程序员的一些理性的思考
@@ -137,7 +148,7 @@
   
   
     <a href="/2016/09/23/大三上学期面试寒假实习生收获/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">大三上学期面试寒假实习生收获</div>
     </a>
   
@@ -176,9 +187,9 @@
     
       <div class="widget" id="toc-widget-fixed">
       
-        <strong class="toc-title">Content</strong>
+        <strong class="toc-title">文章目录</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#问题描述"><span class="toc-number">1.</span> <span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题解决方式"><span class="toc-number">2.</span> <span class="toc-text">问题解决方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一、我需要结局给tomcat-users-xml给定帐号密码的值"><span class="toc-number">2.1.</span> <span class="toc-text">第一、我需要结局给tomcat-users.xml给定帐号密码的值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二个问题是我需要让我进入那个登录验证的页面。"><span class="toc-number">2.2.</span> <span class="toc-text">第二个问题是我需要让我进入那个登录验证的页面。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#感悟"><span class="toc-number">2.3.</span> <span class="toc-text">感悟</span></a></li></ol></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题描述"><span class="toc-number">1.</span> <span class="toc-text">问题描述</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#更新"><span class="toc-number"></span> <span class="toc-text">更新</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题解决方式"><span class="toc-number"></span> <span class="toc-text">问题解决方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一、我需要结局给tomcat-users-xml给定帐号密码的值"><span class="toc-number">1.</span> <span class="toc-text">第一、我需要结局给tomcat-users.xml给定帐号密码的值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二远程登录tomcat管理页面"><span class="toc-number">2.</span> <span class="toc-text">第二远程登录tomcat管理页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二个问题是我需要让我进入那个登录验证的页面。-错误的）"><span class="toc-number">3.</span> <span class="toc-text">第二个问题是我需要让我进入那个登录验证的页面。(错误的）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#感悟"><span class="toc-number">4.</span> <span class="toc-text">感悟</span></a></li></ol>
           </div>
       </div>
     </div>
@@ -209,10 +220,10 @@
   <div class="outer">
     <div id="footer-left">
       &copy; 2014 - 2017 forvoid&nbsp;|&nbsp;
-      Theme by <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
     </div>
      <div id="footer-right">
-      Contact&nbsp;|&nbsp;172953249@qq.com
+      联系方式&nbsp;|&nbsp;172953249@qq.com
     </div>
   </div>
 </footer>
