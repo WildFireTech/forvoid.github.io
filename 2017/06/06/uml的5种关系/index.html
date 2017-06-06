@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>uml的5种关系 | forvoid的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="UML中对象与对象之间，类与类之间 模型与模型之间 元素与元素之间有5种关系：关联关系、聚合关系、依赖关系、泛化关系、实现关系。">
+<meta name="keywords" content="软件设计与分析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="uml的5种关系">
+<meta property="og:url" content="https://forvoid.me/2017/06/06/uml的5种关系/index.html">
+<meta property="og:site_name" content="forvoid的博客">
+<meta property="og:description" content="UML中对象与对象之间，类与类之间 模型与模型之间 元素与元素之间有5种关系：关联关系、聚合关系、依赖关系、泛化关系、实现关系。">
+<meta property="og:image" content="https://forvoid.me/images/ooaood/association.png">
+<meta property="og:image" content="https://forvoid.me/images/ooaood/Aggregation.png">
+<meta property="og:image" content="https://forvoid.me/images/ooaood/Dependency.png">
+<meta property="og:image" content="https://forvoid.me/images/ooaood/Generalization.png">
+<meta property="og:image" content="https://forvoid.me/images/ooaood/Realization.png">
+<meta property="og:updated_time" content="2017-06-06T15:44:26.958Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="uml的5种关系">
+<meta name="twitter:description" content="UML中对象与对象之间，类与类之间 模型与模型之间 元素与元素之间有5种关系：关联关系、聚合关系、依赖关系、泛化关系、实现关系。">
+<meta name="twitter:image" content="https://forvoid.me/images/ooaood/association.png">
+  
+    <link rel="alternate" href="/atom.xml" title="forvoid的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://forvoid.me"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">forvoid的博客</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-uml的5种关系" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/06/uml的5种关系/" class="article-date">
+  <time datetime="2017-06-06T14:33:36.000Z" itemprop="datePublished">2017-06-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      uml的5种关系
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>UML中对象与对象之间，类与类之间 模型与模型之间 元素与元素之间有5种关系：关联关系、聚合关系、依赖关系、泛化关系、实现关系。<br><a id="more"></a></p>
+<h2 id="关联关系（Association）"><a href="#关联关系（Association）" class="headerlink" title="关联关系（Association）"></a>关联关系（Association）</h2><p>关联关系是一种结构化关系（一个对象和另一个关系有联系）。可以从其中一个类的对象访问到另一个类的相关对象。</p>
+<h3 id="图示"><a href="#图示" class="headerlink" title="图示"></a>图示</h3><p><img src="../../../../images/ooaood/association.png" alt="关联关系"></p>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p>关联关系分类</p>
+<ul>
+<li>单向关联关系（导航关联关系）（可以用箭头表示）</li>
+<li>双向关联关系</li>
+</ul>
+<h2 id="聚合关系（Aggregation）"><a href="#聚合关系（Aggregation）" class="headerlink" title="聚合关系（Aggregation）"></a>聚合关系（Aggregation）</h2><p>是<code>关联关系的特例</code>,聚合表示类与类之间的关系是整体与部分的关系。（就像学校和学校里里面的机构的关系）</p>
+<h3 id="图示-1"><a href="#图示-1" class="headerlink" title="图示"></a>图示</h3><p><img src="../../../../images/ooaood/Aggregation.png" alt="关联关系"></p>
+<h3 id="分类-1"><a href="#分类-1" class="headerlink" title="分类"></a>分类</h3><ul>
+<li>共享聚合：部分的对象同时参与多个整体中的对象构成（部分有多个整体）</li>
+<li>复合聚合（组成）（Composition）：部分完全隶属于整体。(组合关系用实心菱形表示</li>
+</ul>
+<h2 id="依赖关系（Dependency）"><a href="#依赖关系（Dependency）" class="headerlink" title="依赖关系（Dependency）"></a>依赖关系（Dependency）</h2><p>依赖关系是两个单向的，<br>其中一个独立，另外一个必须依赖独立的那个元素。如果独立的改变将影响依赖</p>
+<h3 id="图示-2"><a href="#图示-2" class="headerlink" title="图示"></a>图示</h3><p><img src="../../../../images/ooaood/Dependency.png" alt="关联关系"></p>
+<h2 id="泛化关系（Generalization）"><a href="#泛化关系（Generalization）" class="headerlink" title="泛化关系（Generalization）"></a>泛化关系（Generalization）</h2><p>一般元素和特殊元素之间的分类关系（继承关系）</p>
+<h3 id="图示-3"><a href="#图示-3" class="headerlink" title="图示"></a>图示</h3><p><img src="../../../../images/ooaood/Generalization.png" alt="关联关系"></p>
+<h3 id="泛化的分类"><a href="#泛化的分类" class="headerlink" title="泛化的分类"></a>泛化的分类</h3><ul>
+<li>普通泛化：不给泛化添加约束。</li>
+<li>受限泛化：给泛化附加约束条件，预定义的约束有：多重、不相交、完全和不完全。</li>
+</ul>
+<h2 id="实现关系（Realization）"><a href="#实现关系（Realization）" class="headerlink" title="实现关系（Realization）"></a>实现关系（Realization）</h2><p>将类与接口连接起来。接口只是说明说明结构。不是实现。<br><img src="../../../../images/ooaood/Realization.png" alt="关联关系"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>关联关系是实线两端没有箭头</p>
+<p>复合关系是实线整体方空心菱形箭头</p>
+<p>组合关系是实线整体方实心菱形箭头</p>
+<p>依赖关系是虚线被依赖方正常箭头</p>
+<p>泛化关系是实线被继承方三角形空心箭头</p>
+<p>实现关系是虚线被实现方三角形空心箭头</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://forvoid.me/2017/06/06/uml的5种关系/" data-id="cj3lqkb6c000ipcvv16zejrm4" class="article-share-link">Share</a>
+      
+      
+        <a href="https://forvoid.me/2017/06/06/uml的5种关系/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件设计与分析/">软件设计与分析</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/31/CDN原理极其工作机制/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          CDN原理极其工作机制笔记
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+      </section>
+      
+       
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">Content</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关联关系（Association）"><span class="toc-number">1.</span> <span class="toc-text">关联关系（Association）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#图示"><span class="toc-number">1.1.</span> <span class="toc-text">图示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分类"><span class="toc-number">1.2.</span> <span class="toc-text">分类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#聚合关系（Aggregation）"><span class="toc-number">2.</span> <span class="toc-text">聚合关系（Aggregation）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#图示-1"><span class="toc-number">2.1.</span> <span class="toc-text">图示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分类-1"><span class="toc-number">2.2.</span> <span class="toc-text">分类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#依赖关系（Dependency）"><span class="toc-number">3.</span> <span class="toc-text">依赖关系（Dependency）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#图示-2"><span class="toc-number">3.1.</span> <span class="toc-text">图示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#泛化关系（Generalization）"><span class="toc-number">4.</span> <span class="toc-text">泛化关系（Generalization）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#图示-3"><span class="toc-number">4.1.</span> <span class="toc-text">图示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#泛化的分类"><span class="toc-number">4.2.</span> <span class="toc-text">泛化的分类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现关系（Realization）"><span class="toc-number">5.</span> <span class="toc-text">实现关系（Realization）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+    
+
+  
+    
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2017 forvoid&nbsp;|&nbsp;
+      Theme by <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      Contact&nbsp;|&nbsp;172953249@qq.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+
+<script>
+  var disqus_shortname = 'forvoid';
+  
+  var disqus_url = 'https://forvoid.me/2017/06/06/uml的5种关系/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>
