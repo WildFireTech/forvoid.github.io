@@ -185,7 +185,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://forvoid.me/2017/03/24/结构型模式总结和分析/" data-id="cj3vi0cbj001e4ovvfpwfyx0p" class="article-share-link">分享</a>
+      <a data-url="https://forvoid.me/2017/03/24/结构型模式总结和分析/" data-id="cj3vldpwk001d70vv4krjhgan" class="article-share-link">分享</a>
       
       
       
@@ -223,9 +223,11 @@
      
        
        
-            <div id="SOHUCS" sid="2017/03/24/结构型模式总结和分析/"> </div>
-    
       
+    
+      <div id="gitment"></div>
+
+  
   </div>
  
 
@@ -307,50 +309,29 @@ window.onload = function() {
 </script>
       
 
+  
+
+  
 
 
-<script type="text/javascript ">
-    (function () {
-        var appid = 'cyt3QCrN8';
-        var conf = '0609f6327fea62e6dada4cd56ddc2394';
-        var width = window.innerWidth || document.documentElement.clientWidth;
-        if (width < 960) {
-            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
-        } else {
-            var loadJs = function (d, a) {
-                var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
-                var b = document.createElement("script");
-                b.setAttribute("type", "text/javascript");
-                b.setAttribute("charset", "UTF-8");
-                b.setAttribute("src", d);
-                if (typeof a === "function") {
-                    if (window.attachEvent) {
-                        b.onreadystatechange = function () {
-                            var e = b.readyState;
-                            if (e === "loaded" || e === "complete") {
-                                b.onreadystatechange = null;
-                                a()
-                            }
-                        }
-                    } else {
-                        b.onload = a
-                    }
-                }
-                c.appendChild(b)
-            };
-            loadJs("http://changyan.sohu.com/upload/changyan.js", function () {
-                window.changyan.api.config({
-                    appid: appid,
-                    conf: conf
-                })
-            });
-        }
-    })();
+
+
+
+
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+  // id: '页面 ID', // 可选。默认为 location.href
+  owner: '14368281',
+  repo: 'forvoid.github.io',
+  oauth: {
+   client_id: '56eff63fef1b5b37f568',
+   client_secret: '4856dd988c9157b0dcf2c83c94ab4c912621d347',
+  },
+  })
+  gitment.render('gitment')
 </script>
-
-
-
-
 
 
 
