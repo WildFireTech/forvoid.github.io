@@ -44,7 +44,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://forvoid.me"></form>
@@ -201,7 +201,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://forvoid.me/2017/05/01/Java虚拟机参数学习笔记/" data-id="cj3vmo7z30004e4vvicjiylas" class="article-share-link">Share</a>
+      <a data-url="https://forvoid.me/2017/05/01/Java虚拟机参数学习笔记/" data-id="cj3vmqpkw0004ecvvb92g9vs7" class="article-share-link">分享</a>
       
       
       
@@ -214,7 +214,7 @@
 <nav id="article-nav">
   
     <a href="/2017/04/30/Java虚拟机架构笔记/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
           Java虚拟机架构笔记
@@ -224,7 +224,7 @@
   
   
     <a href="/2017/05/08/Java虚拟机垃圾回收概念和算法/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">Java虚拟机垃圾回收概念和算法</div>
     </a>
   
@@ -261,7 +261,7 @@
     
       <div class="widget" id="toc-widget-fixed">
       
-        <strong class="toc-title">Content</strong>
+        <strong class="toc-title">文章目录</strong>
         <div class="toc-widget-list">
               <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">跟踪调试参数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#读懂虚拟机日志"><span class="toc-number">1.1.</span> <span class="toc-text">¶读懂虚拟机日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类加载-卸载的跟踪"><span class="toc-number">1.2.</span> <span class="toc-text">¶类加载、卸载的跟踪</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">堆配置参数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#最大堆和初始堆的设置"><span class="toc-number">2.1.</span> <span class="toc-text">¶最大堆和初始堆的设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新生代配置"><span class="toc-number">2.2.</span> <span class="toc-text">¶新生代配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#堆溢出"><span class="toc-number">2.3.</span> <span class="toc-text">¶堆溢出</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">非堆内存参数配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法区分配"><span class="toc-number">3.1.</span> <span class="toc-text">¶方法区分配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#栈分配"><span class="toc-number">3.2.</span> <span class="toc-text">¶栈分配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#直接内存大小-directmemory"><span class="toc-number">3.3.</span> <span class="toc-text">¶直接内存大小（DirectMemory）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">虚拟机工作模式</span></a></li></ol>
           </div>
@@ -294,10 +294,10 @@
   <div class="outer">
     <div id="footer-left">
       &copy; 2014 - 2017 forvoid&nbsp;|&nbsp;
-      Theme by <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
     </div>
      <div id="footer-right">
-      Contact&nbsp;|&nbsp;172953249@qq.com
+      联系方式&nbsp;|&nbsp;172953249@qq.com
     </div>
   </div>
 </footer>
@@ -334,7 +334,8 @@ window.onload = function() {
 
 
 
-
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
   <script>
   var gitment = new Gitment({
   // id: '页面 ID', // 可选。默认为 location.href
@@ -347,8 +348,7 @@ window.onload = function() {
   })
   gitment.render('gitment')
 </script>
-<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+
 
 
 
