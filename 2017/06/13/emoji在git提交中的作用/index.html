@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>emoji在git提交中的作用😉 | forvoid的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="¶emoji表情 经常看到很多的github项目中都用emoji但是很多时候我不知道他是什么意思，今天花了点时间翻译了一下大神的解释，并且把他的网站中文翻译了一下。">
+<meta name="keywords" content="emoji">
+<meta property="og:type" content="article">
+<meta property="og:title" content="emoji在git提交中的作用😉">
+<meta property="og:url" content="https://forvoid.me/2017/06/13/emoji在git提交中的作用/index.html">
+<meta property="og:site_name" content="forvoid的博客">
+<meta property="og:description" content="¶emoji表情 经常看到很多的github项目中都用emoji但是很多时候我不知道他是什么意思，今天花了点时间翻译了一下大神的解释，并且把他的网站中文翻译了一下。">
+<meta property="og:updated_time" content="2017-06-13T09:28:58.289Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="emoji在git提交中的作用😉">
+<meta name="twitter:description" content="¶emoji表情 经常看到很多的github项目中都用emoji但是很多时候我不知道他是什么意思，今天花了点时间翻译了一下大神的解释，并且把他的网站中文翻译了一下。">
+  
+    <link rel="alternate" href="/atom.xml" title="forvoid的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://forvoid.me"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">forvoid的博客</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-emoji在git提交中的作用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/13/emoji在git提交中的作用/" class="article-date">
+  <time datetime="2017-06-13T09:09:06.000Z" itemprop="datePublished">2017-06-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      emoji在git提交中的作用😉
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="emoji表情"><a class="header-anchor" href="#emoji表情">¶</a>emoji表情</h2>
+<p>经常看到很多的github项目中都用emoji但是很多时候我不知道他是什么意思，今天花了点时间翻译了一下大神的解释，并且把他的网站中文翻译了一下。</p>
+<a id="more"></a>
+<h2 id="网站地址"><a class="header-anchor" href="#网站地址">¶</a>网站地址</h2>
+<blockquote>
+<p>翻译的网站来自https://gitmoji.carloscuesta.me/</p>
+</blockquote>
+<p>我的翻译网站就在自己的博客下面<a href="https://forvoid.github.io/files/emoji_develop/index.html" target="_blank" rel="external">点击进入查看</a><br>
+这个网站在hexo博客下面必须要去<code>站点配置文件</code>进行配置说明不能解析该html文件</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="attr">skip_render:</span></div><div class="line"><span class="bullet">  -</span> <span class="string">'files/*.html'</span></div><div class="line"><span class="bullet">  -</span> <span class="string">'files/**'</span></div></pre></td></tr></table></figure>
+<h2 id="下面说一下如何在自己的网站上使用emoji"><a class="header-anchor" href="#下面说一下如何在自己的网站上使用emoji">¶</a>下面说一下如何在自己的网站上使用emoji</h2>
+<p>因为hexo不支持emoji和GTM方式的编码解析，所以我们要将我们的hexo的编译方式换成<code>hexo-renderer-markdown-it</code>方式如何进行<code>hexo-renderer-markdown-it</code>安装这里放一个传送门<a href="https://github.com/hexojs/hexo-renderer-markdown-it" target="_blank" rel="external">点击进入https://github.com/hexojs/hexo-renderer-markdown-it的github页面</a>。</p>
+<p>然后在里面添加emoji模块<br>
+下载模块</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install markdown-it-emoji --save</div></pre></td></tr></table></figure>
+<p>然后在<code>站点配置文件中</code>添加配置文件</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Markdown-it config</span></div><div class="line"><span class="comment">## Docs: https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki</span></div><div class="line"><span class="attr">markdown:</span></div><div class="line"><span class="attr">  render:</span></div><div class="line"><span class="attr">    html:</span> <span class="literal">true</span></div><div class="line"><span class="attr">    xhtmlOut:</span> <span class="literal">false</span></div><div class="line"><span class="attr">    breaks:</span> <span class="literal">true</span></div><div class="line"><span class="attr">    linkify:</span> <span class="literal">true</span></div><div class="line"><span class="attr">    typographer:</span> <span class="literal">true</span></div><div class="line"><span class="attr">    quotes:</span> <span class="string">'“”‘’'</span></div><div class="line"><span class="attr">  plugins:</span></div><div class="line"><span class="bullet">    -</span> <span class="string">markdown-it-abbr</span></div><div class="line"><span class="bullet">    -</span> <span class="string">markdown-it-footnote</span></div><div class="line"><span class="bullet">    -</span> <span class="string">markdown-it-ins</span></div><div class="line"><span class="bullet">    -</span> <span class="string">markdown-it-sub</span></div><div class="line"><span class="bullet">    -</span> <span class="string">markdown-it-sup</span></div><div class="line"><span class="bullet">    -</span> <span class="string">markdown-it-emoji</span></div><div class="line">    <span class="comment"># - hexo-tag-emojis</span></div><div class="line"><span class="attr">  anchors:</span></div><div class="line"><span class="attr">    level:</span> <span class="number">2</span></div><div class="line"><span class="attr">    collisionSuffix:</span> <span class="string">'v'</span></div><div class="line"><span class="attr">    permalink:</span> <span class="literal">true</span></div><div class="line"><span class="attr">    permalinkClass:</span> <span class="string">header-anchor</span></div><div class="line"><span class="attr">    permalinkSymbol:</span> <span class="string">¶</span></div></pre></td></tr></table></figure>
+<p>上面是我的配置文件，可以到<a href="https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki" target="_blank" rel="external">https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki</a>查看配置</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://forvoid.me/2017/06/13/emoji在git提交中的作用/" data-id="cj3vcuvkm000gqcvv1uc486yc" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/emoji/">emoji</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/06/06/uml的5种关系/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          uml的5种关系
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+       
+            <div id="SOHUCS" sid="2017/06/13/emoji在git提交中的作用/"> </div>
+    
+      
+  </div>
+ 
+
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#emoji表情"><span class="toc-number">1.</span> <span class="toc-text">¶emoji表情</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网站地址"><span class="toc-number">2.</span> <span class="toc-text">¶网站地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下面说一下如何在自己的网站上使用emoji"><span class="toc-number">3.</span> <span class="toc-text">¶下面说一下如何在自己的网站上使用emoji</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+    
+
+  
+    
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2017 forvoid&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;172953249@qq.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+
+
+<script type="text/javascript ">
+    (function () {
+        var appid = 'cyt3QCrN8';
+        var conf = '0609f6327fea62e6dada4cd56ddc2394';
+        var width = window.innerWidth || document.documentElement.clientWidth;
+        if (width < 960) {
+            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+        } else {
+            var loadJs = function (d, a) {
+                var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+                var b = document.createElement("script");
+                b.setAttribute("type", "text/javascript");
+                b.setAttribute("charset", "UTF-8");
+                b.setAttribute("src", d);
+                if (typeof a === "function") {
+                    if (window.attachEvent) {
+                        b.onreadystatechange = function () {
+                            var e = b.readyState;
+                            if (e === "loaded" || e === "complete") {
+                                b.onreadystatechange = null;
+                                a()
+                            }
+                        }
+                    } else {
+                        b.onload = a
+                    }
+                }
+                c.appendChild(b)
+            };
+            loadJs("http://changyan.sohu.com/upload/changyan.js", function () {
+                window.changyan.api.config({
+                    appid: appid,
+                    conf: conf
+                })
+            });
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>
