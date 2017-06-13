@@ -5,13 +5,13 @@
   
   <title>Java虚拟机架构笔记 | forvoid的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="java虚拟机的基本结构给图java的基本结构：">
+  <meta name="description" content="java虚拟机的基本结构 给图java的基本结构：">
 <meta name="keywords" content="javaVM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java虚拟机架构笔记">
 <meta property="og:url" content="https://forvoid.me/2017/04/30/Java虚拟机架构笔记/index.html">
 <meta property="og:site_name" content="forvoid的博客">
-<meta property="og:description" content="java虚拟机的基本结构给图java的基本结构：">
+<meta property="og:description" content="java虚拟机的基本结构 给图java的基本结构：">
 <meta property="og:image" content="https://forvoid.me/images/Java_VM/JavaVM_base.png">
 <meta property="og:image" content="https://forvoid.me/images/Java_VM/new_tenured.png">
 <meta property="og:image" content="https://forvoid.me/images/Java_VM/Object_call_VM.png">
@@ -19,7 +19,7 @@
 <meta property="og:updated_time" content="2017-05-01T03:16:40.056Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java虚拟机架构笔记">
-<meta name="twitter:description" content="java虚拟机的基本结构给图java的基本结构：">
+<meta name="twitter:description" content="java虚拟机的基本结构 给图java的基本结构：">
 <meta name="twitter:image" content="https://forvoid.me/images/Java_VM/JavaVM_base.png">
   
     <link rel="alternate" href="/atom.xml" title="forvoid的博客" type="application/atom+xml">
@@ -97,7 +97,10 @@
       
         <!-- Table of Contents -->
         
-        <h1 id="java虚拟机的基本结构"><a href="#java虚拟机的基本结构" class="headerlink" title="java虚拟机的基本结构"></a>java虚拟机的基本结构</h1><p>给图java的基本结构：<br><img src="/images/Java_VM/JavaVM_base.png" alt="Java的基本结构"><br><a id="more"></a></p>
+        <h1>java虚拟机的基本结构</h1>
+<p>给图java的基本结构：<br>
+<img src="/images/Java_VM/JavaVM_base.png" alt="Java的基本结构"></p>
+<a id="more"></a>
 <blockquote>
 <ul>
 <li>1、类加载结构：从文件系统或者网络中加载Class信息，类信息放入方法区的内存空间。</li>
@@ -111,7 +114,8 @@
 </ul>
 </blockquote>
 <p>垃圾回收系统（GC）：对方法区、Java堆和直接内存进行回收。</p>
-<h1 id="Java堆"><a href="#Java堆" class="headerlink" title="Java堆"></a>Java堆</h1><blockquote>
+<h1>Java堆</h1>
+<blockquote>
 <p>Java堆是GC的重点区域，Java几乎所有对象都存放在这里。</p>
 </blockquote>
 <p><img src="/images/Java_VM/new_tenured.png" alt="java堆分区"></p>
@@ -124,45 +128,61 @@
 <p>Java堆在调用Java指令调用时的内存情况</p>
 </blockquote>
 <p><img src="/images/Java_VM/Object_call_VM.png" alt="堆、方法区、栈的关系"></p>
-<h1 id="Java栈"><a href="#Java栈" class="headerlink" title="Java栈"></a>Java栈</h1><blockquote>
+<h1>Java栈</h1>
+<blockquote>
 <p>Java栈是线程私有的内存空间。Java栈与线程执行密切相关，每次函数调用的数据都是通过Java线程传递的。</p>
 </blockquote>
-<p>Java栈只支持入栈和出栈，Java栈中保存的内容为<code>栈帧</code>，当前帧在栈顶，保存着<code>局部变量</code>、<code>中间运算结果</code>等.<br>当return、或者发生异常时栈帧弹出。</p>
+<p>Java栈只支持入栈和出栈，Java栈中保存的内容为<code>栈帧</code>，当前帧在栈顶，保存着<code>局部变量</code>、<code>中间运算结果</code>等.<br>
+当return、或者发生异常时栈帧弹出。</p>
 <p>一个栈帧中包含<code>局部变量表</code>、<code>操作数</code>、<code>帧数据区</code>几个部分。</p>
 <p><img src="/images/Java_VM/stack_base_structure.png" alt="栈的基本结构图"></p>
-<p><em>如果栈帧的空间不足和当请求深度大于最大可用深度时，系统会抛出StackOverFlowError错误</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">public class TestStackDeep &#123;</div><div class="line">	private static int count = 0;</div><div class="line">	public static void recursion()&#123;</div><div class="line">		count++;</div><div class="line">		recursion();</div><div class="line">	&#125;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		try &#123;</div><div class="line">			recursion();</div><div class="line">		&#125; catch (Throwable e) &#123;</div><div class="line">			System.out.println(&quot;deep of calling = &quot; + count);</div><div class="line">			// TODO: handle exception</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">当-Xss128K</div><div class="line">deep of calling = 1100</div><div class="line">java.lang.StackOverflowError</div><div class="line">当-Xss256K</div><div class="line">deep of calling = 2838</div><div class="line">java.lang.StackOverflowError</div></pre></td></tr></table></figure></p>
+<p><em>如果栈帧的空间不足和当请求深度大于最大可用深度时，系统会抛出StackOverFlowError错误</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">public class TestStackDeep &#123;</div><div class="line">	private static int count = 0;</div><div class="line">	public static void recursion()&#123;</div><div class="line">		count++;</div><div class="line">		recursion();</div><div class="line">	&#125;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		try &#123;</div><div class="line">			recursion();</div><div class="line">		&#125; catch (Throwable e) &#123;</div><div class="line">			System.out.println(&quot;deep of calling = &quot; + count);</div><div class="line">			// TODO: handle exception</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">当-Xss128K</div><div class="line">deep of calling = 1100</div><div class="line">java.lang.StackOverflowError</div><div class="line">当-Xss256K</div><div class="line">deep of calling = 2838</div><div class="line">java.lang.StackOverflowError</div></pre></td></tr></table></figure>
 <p>函数嵌套层次由栈的大小决定，越大，就嵌套调用越多</p>
-<h2 id="局部变量表"><a href="#局部变量表" class="headerlink" title="局部变量表"></a>局部变量表</h2><blockquote>
+<h2 id="局部变量表"><a class="header-anchor" href="#局部变量表">¶</a>局部变量表</h2>
+<blockquote>
 <p>保存函数的参数、局部变量。局部变量只在表中有效，栈帧销毁后就没有了。</p>
 </blockquote>
 <ul>
-<li>long double 2个字，int short byte 对象引用 1个字。<em> 字在32位机中表示4个字节</em></li>
+<li>long double 2个字，int short byte 对象引用 1个字。* 字在32位机中表示4个字节*</li>
 </ul>
-<p>如果函数的局部变量和参数较多，会使局部变量表膨胀，-&gt;导致函数嵌套次数减少.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">public class TestStackDeep &#123;</div><div class="line">	private static int count = 0;</div><div class="line">	public static void recursion(long a, long b, long c)&#123;</div><div class="line">		long e = 1, f = 2, g = 3, h = 4, i = 5, j = 6, k = 7, q = 8, x = 9, z = 10;</div><div class="line">		count++;</div><div class="line">		recursion(a,b,c);</div><div class="line">	&#125;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		try &#123;</div><div class="line">			recursion(0L,0L,0L);</div><div class="line">		&#125; catch (Throwable e) &#123;</div><div class="line">			System.out.println(&quot;deep of calling = &quot; + count);</div><div class="line">			// TODO: handle exception</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">当-Xss128K</div><div class="line">deep of calling = 305</div><div class="line">java.lang.StackOverflowError</div><div class="line">当-Xss256K</div><div class="line">deep of calling = 760</div><div class="line">java.lang.StackOverflowError</div></pre></td></tr></table></figure></p>
+<p>如果函数的局部变量和参数较多，会使局部变量表膨胀，-&gt;导致函数嵌套次数减少.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">public class TestStackDeep &#123;</div><div class="line">	private static int count = 0;</div><div class="line">	public static void recursion(long a, long b, long c)&#123;</div><div class="line">		long e = 1, f = 2, g = 3, h = 4, i = 5, j = 6, k = 7, q = 8, x = 9, z = 10;</div><div class="line">		count++;</div><div class="line">		recursion(a,b,c);</div><div class="line">	&#125;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		try &#123;</div><div class="line">			recursion(0L,0L,0L);</div><div class="line">		&#125; catch (Throwable e) &#123;</div><div class="line">			System.out.println(&quot;deep of calling = &quot; + count);</div><div class="line">			// TODO: handle exception</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">当-Xss128K</div><div class="line">deep of calling = 305</div><div class="line">java.lang.StackOverflowError</div><div class="line">当-Xss256K</div><div class="line">deep of calling = 760</div><div class="line">java.lang.StackOverflowError</div></pre></td></tr></table></figure>
 <blockquote>
 <p>局部变量表也是垃圾回收根节点，被局部变量表中直接引用或者间接引用的都不会被回收。</p>
 <p><code>finalize()和gc()</code></p>
-<p>(1)问题:finalize()函数是干嘛的?Java不是有Garbage Collection(以下简称gc)来负责回收内存吗?<br>回答:<br><code>gc 只能清除在堆上分配的内存</code>(纯java语言的所有对象都在堆上使用new分配内存),而不能清除栈上分配的内存（当使用JNI技术时,可能会在栈上分配内存,例如java调用c程序，而该c程序使用malloc分配内存时）.因此,<code>如果某些对象被分配了栈上的内存区域,那gc就管不着了,对这样的对象进行内存回收就要靠finalize()</code>.</p>
-<p>   举个例子来说,当java 调用非java方法时（这种方法可能是c或是c++的）,在非java代码内部也许调用了c的malloc()函数来分配内存，而且除非调用那个了 free() 否则不会释放内存(因为free()是c的函数),这个时候要进行释放内存的工作,gc是不起作用的,因而需要在finalize()内部的一个固有方法调用它(free()).</p>
+<p>(1)问题:finalize()函数是干嘛的?Java不是有Garbage Collection(以下简称gc)来负责回收内存吗?<br>
+回答:<br>
+<code>gc 只能清除在堆上分配的内存</code>(纯java语言的所有对象都在堆上使用new分配内存),而不能清除栈上分配的内存（当使用JNI技术时,可能会在栈上分配内存,例如java调用c程序，而该c程序使用malloc分配内存时）.因此,<code>如果某些对象被分配了栈上的内存区域,那gc就管不着了,对这样的对象进行内存回收就要靠finalize()</code>.</p>
+<p>举个例子来说,当java 调用非java方法时（这种方法可能是c或是c++的）,在非java代码内部也许调用了c的malloc()函数来分配内存，而且除非调用那个了 free() 否则不会释放内存(因为free()是c的函数),这个时候要进行释放内存的工作,gc是不起作用的,因而需要在finalize()内部的一个固有方法调用它(free()).</p>
 <p>finalize的工作原理应该是这样的：<code>一旦垃圾收集器准备好释放对象占用的存储空间，它首先调用finalize()，而且只有在下一次垃圾收集过程中，才会真正回收对象的内存.所以如果使用finalize()，就可以在垃圾收集期间进行一些重要的清除或清扫工作.</code></p>
-<p>(2)问题:finalize()在什么时候被调用?<br>有三种情况</p>
+</blockquote>
+<blockquote>
+<p>(2)问题:finalize()在什么时候被调用?<br>
+有三种情况</p>
 <p>1.所有对象被Garbage Collection时自动调用,比如运行System.gc()的时候.</p>
 <p>2.程序退出时为每个对象调用一次finalize方法。</p>
-<p> 3.显式的调用finalize方法</p>
+<p>3.显式的调用finalize方法</p>
+</blockquote>
+<blockquote>
 <p>除此以外,正常情况下,当某个对象被系统收集为无用信息的时候,finalize()将被自动调用,但是jvm不保证finalize()一定被调用,也就是说,finalize()的调用是不确定的,这也就是为什么sun不提倡使用finalize()的原因. 简单来讲，finalize()是在对象被GC回收前会调用的方法，而<code>System.gc()强制GC开始回收工作纠正，不是强制，是建议，具体执行要看GC的意思。简单地说，调用了 System.gc() 之后，java 在内存回收过程中就会调用那些要被回收的对象的 finalize() 方法</code>.</p>
 </blockquote>
-<h2 id="操作数栈"><a href="#操作数栈" class="headerlink" title="操作数栈"></a>操作数栈</h2><blockquote>
+<h2 id="操作数栈"><a class="header-anchor" href="#操作数栈">¶</a>操作数栈</h2>
+<blockquote>
 <p>保存计算过程中的中间结果，作为计算过程中变量临时的存储空间。</p>
 </blockquote>
-<h2 id="帧数据区"><a href="#帧数据区" class="headerlink" title="帧数据区"></a>帧数据区</h2><blockquote>
+<h2 id="帧数据区"><a class="header-anchor" href="#帧数据区">¶</a>帧数据区</h2>
+<blockquote>
 <p>保存访问常量池的指针，方便程序访问常量池；和保存<code>异常处理表</code>.</p>
 </blockquote>
-<h2 id="栈上分配"><a href="#栈上分配" class="headerlink" title="栈上分配"></a>栈上分配</h2><blockquote>
+<h2 id="栈上分配"><a class="header-anchor" href="#栈上分配">¶</a>栈上分配</h2>
+<blockquote>
 <p>Java虚拟就提供的一项优化技术，基本思想是：对于那些线程私有的对象，可以将他们打散分配到栈上。可以在函数调用结束后自行销毁，提高系统性能。</p>
 </blockquote>
 <p>栈上分配的技术基础是：进行<code>逃逸分析</code>（判断对象的作用域是否有可能逃逸出函数体），没有逃逸体就可以进行栈上分配。在Server模式下才能就行逃逸分析(-XX:+DoEscapeAnalysis启用逃逸分析),<code>标量替换</code>(-XX:+EliminateAllocations)允许将对象打散分配到栈上</p>
 <p>栈上分配通过逃逸分析和标量替换实现。不适合大对象.</p>
-<h1 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h1><blockquote>
+<h1>方法区</h1>
+<blockquote>
 <p>方法区是线程共享的内存区域。用于保存系统的类信息（类的字段、方法、常量池）.方法区的大小决定了类可以保存多少类。</p>
 </blockquote>
 <ul>
@@ -173,7 +193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://forvoid.me/2017/04/30/Java虚拟机架构笔记/" data-id="cj3lqkb5x0009pcvvnl3hzowa" class="article-share-link">Share</a>
+      <a data-url="https://forvoid.me/2017/04/30/Java虚拟机架构笔记/" data-id="cj3uzewpu0006r0vvba0zi1aq" class="article-share-link">Share</a>
       
       
         <a href="https://forvoid.me/2017/04/30/Java虚拟机架构笔记/#disqus_thread" class="article-comment-link">Comments</a>
@@ -239,7 +259,7 @@
       
         <strong class="toc-title">Content</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#java虚拟机的基本结构"><span class="toc-number">1.</span> <span class="toc-text">java虚拟机的基本结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java堆"><span class="toc-number">2.</span> <span class="toc-text">Java堆</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java栈"><span class="toc-number">3.</span> <span class="toc-text">Java栈</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#局部变量表"><span class="toc-number">3.1.</span> <span class="toc-text">局部变量表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作数栈"><span class="toc-number">3.2.</span> <span class="toc-text">操作数栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#帧数据区"><span class="toc-number">3.3.</span> <span class="toc-text">帧数据区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#栈上分配"><span class="toc-number">3.4.</span> <span class="toc-text">栈上分配</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#方法区"><span class="toc-number">4.</span> <span class="toc-text">方法区</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">java虚拟机的基本结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">Java堆</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">Java栈</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#局部变量表"><span class="toc-number">3.1.</span> <span class="toc-text">¶局部变量表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作数栈"><span class="toc-number">3.2.</span> <span class="toc-text">¶操作数栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#帧数据区"><span class="toc-number">3.3.</span> <span class="toc-text">¶帧数据区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#栈上分配"><span class="toc-number">3.4.</span> <span class="toc-text">¶栈上分配</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">方法区</span></a></li></ol>
           </div>
       </div>
     </div>
