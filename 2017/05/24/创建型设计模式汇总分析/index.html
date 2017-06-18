@@ -42,7 +42,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://forvoid.me"></form>
@@ -99,7 +99,7 @@
 </ul>
 <a id="more"></a>
 <p>创建型模式关心的点是：创建了什么 ， 什么时候创建， 创建的方式 由什么来创建。</p>
-<h2 id="工厂方法模式"><a class="header-anchor" href="#工厂方法模式">¶</a>工厂方法模式</h2>
+<h2>工厂方法模式</h2>
 <p>定义： 定义一个用于创建对象的接口，让子类决定实例化那一个类。工厂方法使得一个类的实例化延迟到其子类。</p>
 <p>主要是不希望使用者知道那几个类进行实例化操作，或者简化自己实例化操作的一些麻烦（主要是如果有固定参数的情况下）.</p>
 <h3 id="模式结构"><a class="header-anchor" href="#模式结构">¶</a>模式结构</h3>
@@ -109,7 +109,7 @@
 <li>当一个类希望由它的子类来指定它所在的对象时。</li>
 <li>当类将创建对象的职责委托给多个帮助子类中的一个，并且希望子类代理者一部分的信息局部化时。</li>
 </ul>
-<h2 id="抽象工厂模式-最重要的"><a class="header-anchor" href="#抽象工厂模式-最重要的">¶</a>抽象工厂模式（最重要的）</h2>
+<h2>抽象工厂模式（最重要的）</h2>
 <p>定义：抽象工厂模式提供一个创建一系列相关或者相互依赖对象的接口，而无需指定他们具体的类（依赖接口不依赖具体的实现）</p>
 <p>违背了开放-封闭原则 添加新产品麻烦</p>
 <p>分离了客户端和后台逻辑 实现简单，易于操作。</p>
@@ -121,7 +121,7 @@
 <li>当要强调一些列相关产品对象的设计以便进行联合使用时</li>
 <li>当要提供一个产品类库，而知识显示它们的接口而不是实现时。</li>
 </ul>
-<h2 id="单例模式"><a class="header-anchor" href="#单例模式">¶</a>单例模式</h2>
+<h2>单例模式</h2>
 <p>定义： 保证一个类仅有一个实例，并且提供一个访问它的全局访问点。</p>
 <p>就是简单的一个类之能有一个实例（呜呜）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">import java.util.concurrent.locks.Lock;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by forvoid on 5/24/2017.</div><div class="line"> */</div><div class="line">public class Singleton &#123;</div><div class="line">    private static Singleton singInstance;</div><div class="line">    private static Lock lock;</div><div class="line">    private Singleton()&#123;//内部访问</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    public static Singleton getSingInstance()&#123;</div><div class="line">        if (singInstance == null)&#123;</div><div class="line">            lock.lock();</div><div class="line">            if (singInstance == null)&#123;</div><div class="line">                singInstance = new Singleton();</div><div class="line">            &#125;</div><div class="line">            lock.unlock();</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        return singInstance;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -136,7 +136,7 @@
 <li>当类只能有一个实例</li>
 <li>当一个唯一的实例可以通过子类化来扩展，而且第三方需要在不修改代码的情况下就能使用这个扩展的实例时。</li>
 </ul>
-<h2 id="建造者模式-创建不同的对象"><a class="header-anchor" href="#建造者模式-创建不同的对象">¶</a>建造者模式（创建不同的对象）</h2>
+<h2>建造者模式（创建不同的对象）</h2>
 <p>定义： 将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。</p>
 <p>就是将构造和逻辑分开。把构造作为一个完整的单独任务去完成。</p>
 <h3 id="模式结构-v4"><a class="header-anchor" href="#模式结构-v4">¶</a>模式结构</h3>
@@ -145,7 +145,7 @@
 <li>当需要把构造对象的实例的逻辑转移到类的外面去，这个类的外部去定义其构造逻辑。</li>
 <li>当需要按照某种步骤去构造对象时。</li>
 </ul>
-<h2 id="原型模式"><a class="header-anchor" href="#原型模式">¶</a>原型模式</h2>
+<h2>原型模式</h2>
 <p>定义：用原型实例指定创建对象的种类，并且通过复制这些原型创建新的对象。</p>
 <p>就是复制对象的一种设计模式，只是有些复制可以个性化的设置，或者修改。</p>
 <p>使用克隆的方式时要注意 <code>深复制</code>（当变量有对象时，新建一个对象，然后引用到新的那个变量）和<code>浅复制</code>（如果变量是对象时，直接复制原有的引用）。（Cloneable）</p>
@@ -156,14 +156,14 @@
 <li>为了避免创建一个产品类层次并行的工厂类层次时。</li>
 <li>当一个类的实例只能有几个不同状态组合中的一种时。</li>
 </ul>
-<h2 id="总结"><a class="header-anchor" href="#总结">¶</a>总结</h2>
+<h2>总结</h2>
 <p>总的来说，就是和开头一样，创建型模式就是去思考如何去创建一些相对于特定环境下，满足或者尽量满足六大设计模式的的情况下的类的对象。这些对象的创建要优雅，并且能让我们的程序开发更加的爽。</p>
 <p>各种设计模式感觉还是很多的，对于如何去合理的在代码中服务还是有点困难的。之前没学过设计模式很多都感觉自己想到的一些简便的写法，都觉得自己很了不起（可以写出这种代码， 哈哈哈）,但是在看了设计模式的，学习了设计模式。感觉写出感觉很精巧的代码应该是常态化的，写不出来，才是很丢人的 呜呜 Fight!!!</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://forvoid.me/2017/05/24/创建型设计模式汇总分析/" data-id="cj3vmqpm0000tecvv0mrw1pp5" class="article-share-link">分享</a>
+      <a data-url="https://forvoid.me/2017/05/24/创建型设计模式汇总分析/" data-id="cj42xsw0b000wuovvpigqmpss" class="article-share-link">Share</a>
       
       
       
@@ -176,7 +176,7 @@
 <nav id="article-nav">
   
     <a href="/2017/05/23/程序设计原则（六个）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
           程序设计原则（六个）
@@ -186,7 +186,7 @@
   
   
     <a href="/2017/05/24/行为型模式学习笔记/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">行为型模式学习笔记</div>
     </a>
   
@@ -223,9 +223,9 @@
     
       <div class="widget" id="toc-widget-fixed">
       
-        <strong class="toc-title">文章目录</strong>
+        <strong class="toc-title">Content</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#工厂方法模式"><span class="toc-number">1.</span> <span class="toc-text">¶工厂方法模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模式结构"><span class="toc-number">1.1.</span> <span class="toc-text">¶模式结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适用范围"><span class="toc-number">1.2.</span> <span class="toc-text">¶适用范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抽象工厂模式-最重要的"><span class="toc-number">2.</span> <span class="toc-text">¶抽象工厂模式（最重要的）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模式结构-v2"><span class="toc-number">2.1.</span> <span class="toc-text">¶模式结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适用范围-v2"><span class="toc-number">2.2.</span> <span class="toc-text">¶适用范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单例模式"><span class="toc-number">3.</span> <span class="toc-text">¶单例模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#懒汉模式和恶汉模式-面试中问道了呜呜悲哀"><span class="toc-number">3.1.</span> <span class="toc-text">¶懒汉模式和恶汉模式（面试中问道了呜呜悲哀）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模式结构-v3"><span class="toc-number">3.2.</span> <span class="toc-text">¶模式结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适用范围-v3"><span class="toc-number">3.3.</span> <span class="toc-text">¶适用范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#建造者模式-创建不同的对象"><span class="toc-number">4.</span> <span class="toc-text">¶建造者模式（创建不同的对象）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模式结构-v4"><span class="toc-number">4.1.</span> <span class="toc-text">¶模式结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适用范围-v4"><span class="toc-number">4.2.</span> <span class="toc-text">¶适用范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原型模式"><span class="toc-number">5.</span> <span class="toc-text">¶原型模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模式结构-v5"><span class="toc-number">5.1.</span> <span class="toc-text">¶模式结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适用范围-v5"><span class="toc-number">5.2.</span> <span class="toc-text">¶适用范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">6.</span> <span class="toc-text">¶总结</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">工厂方法模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模式结构"><span class="toc-number">1.1.</span> <span class="toc-text">¶模式结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适用范围"><span class="toc-number">1.2.</span> <span class="toc-text">¶适用范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">抽象工厂模式（最重要的）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模式结构-v2"><span class="toc-number">2.1.</span> <span class="toc-text">¶模式结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适用范围-v2"><span class="toc-number">2.2.</span> <span class="toc-text">¶适用范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">单例模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#懒汉模式和恶汉模式-面试中问道了呜呜悲哀"><span class="toc-number">3.1.</span> <span class="toc-text">¶懒汉模式和恶汉模式（面试中问道了呜呜悲哀）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模式结构-v3"><span class="toc-number">3.2.</span> <span class="toc-text">¶模式结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适用范围-v3"><span class="toc-number">3.3.</span> <span class="toc-text">¶适用范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">建造者模式（创建不同的对象）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模式结构-v4"><span class="toc-number">4.1.</span> <span class="toc-text">¶模式结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适用范围-v4"><span class="toc-number">4.2.</span> <span class="toc-text">¶适用范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">原型模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模式结构-v5"><span class="toc-number">5.1.</span> <span class="toc-text">¶模式结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适用范围-v5"><span class="toc-number">5.2.</span> <span class="toc-text">¶适用范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li></ol>
           </div>
       </div>
     </div>
@@ -256,10 +256,10 @@
   <div class="outer">
     <div id="footer-left">
       &copy; 2014 - 2017 forvoid&nbsp;|&nbsp;
-      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+      Theme by <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
     </div>
      <div id="footer-right">
-      联系方式&nbsp;|&nbsp;172953249@qq.com
+      Contact&nbsp;|&nbsp;172953249@qq.com
     </div>
   </div>
 </footer>

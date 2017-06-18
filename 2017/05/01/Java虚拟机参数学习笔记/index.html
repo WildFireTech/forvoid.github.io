@@ -44,7 +44,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://forvoid.me"></form>
@@ -97,7 +97,7 @@
         <p>学习一些J常用的Java虚拟机参数，对系统进行跟踪和配置，对系统故障诊断、性能优化。</p>
 <a id="more"></a>
 <h1>跟踪调试参数</h1>
-<h2 id="读懂虚拟机日志"><a class="header-anchor" href="#读懂虚拟机日志">¶</a>读懂虚拟机日志</h2>
+<h2>读懂虚拟机日志</h2>
 <ul>
 <li>1、<code>-XX:+PrintGC</code>:使用这个参数启动Java虚拟机后，只要遇到GC就会打印</li>
 </ul>
@@ -118,7 +118,7 @@
 <li><code>-XX:+PrintReferenceGC</code>:跟踪软引用、弱引用、虚引用。</li>
 <li><code>-Xloggc:d:/gc.log</code>：指定一个文件夹记录GC日志。</li>
 </ul>
-<h2 id="类加载-卸载的跟踪"><a class="header-anchor" href="#类加载-卸载的跟踪">¶</a>类加载、卸载的跟踪</h2>
+<h2>类加载、卸载的跟踪</h2>
 <ul>
 <li><code>-XX:+TraceClassUnloading</code> 和 <code>-XX:+TraceClassLoading</code>输出类的加载和卸载过程。</li>
 </ul>
@@ -137,7 +137,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[Global flags]</div><div class="line">    uintx AdaptiveSizeDecrementScaleFactor          = 4                                   &#123;product&#125;</div><div class="line">    uintx AdaptiveSizeMajorGCDecayTimeScale         = 10                                  &#123;product&#125;</div><div class="line">    uintx AdaptiveSizePausePolicy                   = 0                                   &#123;product&#125;</div><div class="line">    略。。。</div></pre></td></tr></table></figure>
 <h1>堆配置参数</h1>
 <p>主要介绍与堆有关的参数配置，对程序性能有着重要影响。</p>
-<h2 id="最大堆和初始堆的设置"><a class="header-anchor" href="#最大堆和初始堆的设置">¶</a>最大堆和初始堆的设置</h2>
+<h2>最大堆和初始堆的设置</h2>
 <ul>
 <li>-Xms[128K]:初始化堆的大小，Java虚拟机会尽可能的维护在初始堆空间范围内运行，如果初始堆空间耗尽，虚拟机将会对堆空间进行扩展。</li>
 <li>-Xmx[32M]：堆的最大空间，就是堆空间的上限。</li>
@@ -148,7 +148,7 @@
 </blockquote>
 <p>当申请的空间大于了初始空间，使用空间将翻倍直至与最大空间相同。使用的空间等于 total - free</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">maxMemory= 20316160 bytes 最大20M</div><div class="line">free mem = 5277784bytes   空闲5M</div><div class="line">total mem = 6094848bytes  总共有6M</div><div class="line"></div><div class="line">maxMemory= 20316160 bytes</div><div class="line">free mem = 4532784bytes</div><div class="line">total mem = 10358784bytes</div></pre></td></tr></table></figure>
-<h2 id="新生代配置"><a class="header-anchor" href="#新生代配置">¶</a>新生代配置</h2>
+<h2>新生代配置</h2>
 <ul>
 <li>-Xmn[125K]：用于设置<code>新生代</code>的大小。设置一个较大的新生代会减小老年代的大小，（一般新生代设置为整个堆空间的1/3或者1/4）。</li>
 <li>-XX:SurvivorRatio=eden/from = eden/to:用于设置新生代中<code>eden</code>区和<code>from</code>区的比例关系.</li>
@@ -163,13 +163,13 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-Xms20M -Xmx20M  -XX:NewRatio=2 -XX:+PrintGCDetails -XX:+UseSerialGC</div></pre></td></tr></table></figure>
 <p><img src="/images/Java_VM/new_old_perm.png" alt="堆参数分配示意图"></p>
-<h2 id="堆溢出"><a class="header-anchor" href="#堆溢出">¶</a>堆溢出</h2>
+<h2>堆溢出</h2>
 <ul>
 <li><code>-XX:+HeapDumpOnOutOfMemoryError</code>和<code>-XX:HeapDumpPath</code>排查堆溢出.</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-Xms20M -Xmx20M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=d:/d.hprof  -XX:+UseSerialGC</div></pre></td></tr></table></figure>
 <h1>非堆内存参数配置</h1>
-<h2 id="方法区分配"><a class="header-anchor" href="#方法区分配">¶</a>方法区分配</h2>
+<h2>方法区分配</h2>
 <p>在jdk1.6 1.7版本中使用，默认最大为64M</p>
 <ul>
 <li><code>-XX:PermSize</code>:永久区初始大小</li>
@@ -179,11 +179,11 @@
 <ul>
 <li><code>-XX:MaxMetaspaceSize</code>：指定永久区的最大可用</li>
 </ul>
-<h2 id="栈分配"><a class="header-anchor" href="#栈分配">¶</a>栈分配</h2>
+<h2>栈分配</h2>
 <ul>
 <li><code>-Xss</code>：指定线程的栈的大小。</li>
 </ul>
-<h2 id="直接内存大小-directmemory"><a class="header-anchor" href="#直接内存大小-directmemory">¶</a>直接内存大小（DirectMemory）</h2>
+<h2>直接内存大小（DirectMemory）</h2>
 <p>直接内存跳过Java堆，让Java程序直接访问系统原生堆空间，提高内存的访问速度(一般情况下）。</p>
 <ul>
 <li><code>-XX:MaxDirectMemorySize</code>：Java的最大可用直接内存。当直接内存到达最大值时，将进行GC，不能放出足够的内存时，将抛出OOM错误。</li>
@@ -201,7 +201,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://forvoid.me/2017/05/01/Java虚拟机参数学习笔记/" data-id="cj3vmqpkw0004ecvvb92g9vs7" class="article-share-link">分享</a>
+      <a data-url="https://forvoid.me/2017/05/01/Java虚拟机参数学习笔记/" data-id="cj42xsvy40004uovv667dsf14" class="article-share-link">Share</a>
       
       
       
@@ -214,7 +214,7 @@
 <nav id="article-nav">
   
     <a href="/2017/04/30/Java虚拟机架构笔记/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
           Java虚拟机架构笔记
@@ -224,7 +224,7 @@
   
   
     <a href="/2017/05/08/Java虚拟机垃圾回收概念和算法/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">Java虚拟机垃圾回收概念和算法</div>
     </a>
   
@@ -261,9 +261,9 @@
     
       <div class="widget" id="toc-widget-fixed">
       
-        <strong class="toc-title">文章目录</strong>
+        <strong class="toc-title">Content</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">跟踪调试参数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#读懂虚拟机日志"><span class="toc-number">1.1.</span> <span class="toc-text">¶读懂虚拟机日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类加载-卸载的跟踪"><span class="toc-number">1.2.</span> <span class="toc-text">¶类加载、卸载的跟踪</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">堆配置参数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#最大堆和初始堆的设置"><span class="toc-number">2.1.</span> <span class="toc-text">¶最大堆和初始堆的设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新生代配置"><span class="toc-number">2.2.</span> <span class="toc-text">¶新生代配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#堆溢出"><span class="toc-number">2.3.</span> <span class="toc-text">¶堆溢出</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">非堆内存参数配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法区分配"><span class="toc-number">3.1.</span> <span class="toc-text">¶方法区分配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#栈分配"><span class="toc-number">3.2.</span> <span class="toc-text">¶栈分配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#直接内存大小-directmemory"><span class="toc-number">3.3.</span> <span class="toc-text">¶直接内存大小（DirectMemory）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">虚拟机工作模式</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">跟踪调试参数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">读懂虚拟机日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">类加载、卸载的跟踪</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">堆配置参数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text">最大堆和初始堆的设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.2.</span> <span class="toc-text">新生代配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.3.</span> <span class="toc-text">堆溢出</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">非堆内存参数配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.1.</span> <span class="toc-text">方法区分配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.2.</span> <span class="toc-text">栈分配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.3.</span> <span class="toc-text">直接内存大小（DirectMemory）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">虚拟机工作模式</span></a></li></ol>
           </div>
       </div>
     </div>
@@ -294,10 +294,10 @@
   <div class="outer">
     <div id="footer-left">
       &copy; 2014 - 2017 forvoid&nbsp;|&nbsp;
-      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+      Theme by <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
     </div>
      <div id="footer-right">
-      联系方式&nbsp;|&nbsp;172953249@qq.com
+      Contact&nbsp;|&nbsp;172953249@qq.com
     </div>
   </div>
 </footer>

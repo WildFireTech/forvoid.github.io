@@ -42,7 +42,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://forvoid.me"></form>
@@ -96,7 +96,7 @@
 <p>文章摘自《从零开始写Java框架》的事务管理简介部分，感觉还不错，做个笔记</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="什么是事务-transaction"><a class="header-anchor" href="#什么是事务-transaction">¶</a>什么是事务（Transaction）</h2>
+<h2>什么是事务（Transaction）</h2>
 <p>事务：就是做一个任务，要么全部做完，要么都不做，不会存在做一半留一半的情况。</p>
 <p>事务的4个性质（ACID）</p>
 <ul>
@@ -113,7 +113,7 @@
 <li>Repeatable_read;可重复读：可重复读。在同一个事务内的查询都是事务开始时刻一致的，InnoDB默认级别，mysql默认。在SQL标准中，该隔离级别消除了不可重复读，但是还存在幻读。可重读这个概念是一事务的多个实例在并发读取数据时，会看到同样的数据行。不可重读：事务B修改id=1的数据提交之后，事务A同样的查询，后一次和前一次的结果不一样。</li>
 <li>SeriaLizable;可串行化：完全串行化的读，每次读都需要获得表级共享锁，读写相互都会阻塞。读加共享锁，写加排他锁，读写互斥，使用的悲观锁的理论，实现简单，数据更加安全，但是并发能力非常差。</li>
 </ul>
-<h2 id="事务面临的问题"><a class="header-anchor" href="#事务面临的问题">¶</a>事务面临的问题</h2>
+<h2>事务面临的问题</h2>
 <p>隔离性在高并发的情况下会产生以下几种情况</p>
 <ul>
 <li>Dirty Read(脏读) 两个事务相互影响）。例：<code>事务A提读取了事务B未提交的数据</code></li>
@@ -157,7 +157,7 @@
 </tbody>
 </table>
 <p>mysql的解决方式采用事务隔离级别。</p>
-<h2 id="隔离级别和锁持续时间"><a class="header-anchor" href="#隔离级别和锁持续时间">¶</a>隔离级别和锁持续时间</h2>
+<h2>隔离级别和锁持续时间</h2>
 <p>在基于锁的并发控制中，隔离级别决定了锁的持有时间。“C”-表示锁会持续到事务提交。 “S” –表示锁持续到当前语句执行完毕。如果锁在语句执行完毕就释放则另外一个事务就可以在这个事务提交前修改锁定的数据，从而造成混乱。（引用【维基百科】<a href="https://zh.wikipedia.org/wiki/%E4%BA%8B%E5%8B%99%E9%9A%94%E9%9B%A2" target="_blank" rel="external">地址</a>）</p>
 <table>
 <thead>
@@ -195,7 +195,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="spring的事务机制"><a class="header-anchor" href="#spring的事务机制">¶</a>Spring的事务机制</h2>
+<h2>Spring的事务机制</h2>
 <blockquote>
 <p>摘自ibm技术博客。<a href="https://www.ibm.com/developerworks/cn/education/opensource/os-cn-spring-trans/" target="_blank" rel="external">https://www.ibm.com/developerworks/cn/education/opensource/os-cn-spring-trans/</a></p>
 </blockquote>
@@ -224,7 +224,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://forvoid.me/2017/05/16/事务管理简介（数据库和spring）/" data-id="cj3vmqplx000qecvvnwg95aiz" class="article-share-link">分享</a>
+      <a data-url="https://forvoid.me/2017/05/16/事务管理简介（数据库和spring）/" data-id="cj42xsvzv000quovve5vcd6ba" class="article-share-link">Share</a>
       
       
       
@@ -237,7 +237,7 @@
 <nav id="article-nav">
   
     <a href="/2017/05/15/配置校园内网netkeeper路由器使用/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
           配置校园内网netkeeper路由器使用📫
@@ -247,7 +247,7 @@
   
   
     <a href="/2017/05/22/散列（Hash）的计算原理和解决冲突/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">散列（Hash）的计算原理和解决冲突</div>
     </a>
   
@@ -284,9 +284,9 @@
     
       <div class="widget" id="toc-widget-fixed">
       
-        <strong class="toc-title">文章目录</strong>
+        <strong class="toc-title">Content</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是事务-transaction"><span class="toc-number">1.</span> <span class="toc-text">¶什么是事务（Transaction）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#事务隔离级别"><span class="toc-number">1.1.</span> <span class="toc-text">¶事务隔离级别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务面临的问题"><span class="toc-number">2.</span> <span class="toc-text">¶事务面临的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#隔离级别和锁持续时间"><span class="toc-number">3.</span> <span class="toc-text">¶隔离级别和锁持续时间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#spring的事务机制"><span class="toc-number">4.</span> <span class="toc-text">¶Spring的事务机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#spring事务隔离级别-5个级别"><span class="toc-number">4.1.</span> <span class="toc-text">¶spring事务隔离级别(5个级别）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事务传播行为"><span class="toc-number">4.2.</span> <span class="toc-text">¶事务传播行为</span></a></li></ol></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">什么是事务（Transaction）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#事务隔离级别"><span class="toc-number">1.1.</span> <span class="toc-text">¶事务隔离级别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">事务面临的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">隔离级别和锁持续时间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">Spring的事务机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#spring事务隔离级别-5个级别"><span class="toc-number">4.1.</span> <span class="toc-text">¶spring事务隔离级别(5个级别）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事务传播行为"><span class="toc-number">4.2.</span> <span class="toc-text">¶事务传播行为</span></a></li></ol></li></ol>
           </div>
       </div>
     </div>
@@ -317,10 +317,10 @@
   <div class="outer">
     <div id="footer-left">
       &copy; 2014 - 2017 forvoid&nbsp;|&nbsp;
-      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+      Theme by <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
     </div>
      <div id="footer-right">
-      联系方式&nbsp;|&nbsp;172953249@qq.com
+      Contact&nbsp;|&nbsp;172953249@qq.com
     </div>
   </div>
 </footer>

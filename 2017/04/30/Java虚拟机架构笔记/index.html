@@ -47,7 +47,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://forvoid.me"></form>
@@ -139,7 +139,7 @@
 <p><em>如果栈帧的空间不足和当请求深度大于最大可用深度时，系统会抛出StackOverFlowError错误</em></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">public class TestStackDeep &#123;</div><div class="line">	private static int count = 0;</div><div class="line">	public static void recursion()&#123;</div><div class="line">		count++;</div><div class="line">		recursion();</div><div class="line">	&#125;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		try &#123;</div><div class="line">			recursion();</div><div class="line">		&#125; catch (Throwable e) &#123;</div><div class="line">			System.out.println(&quot;deep of calling = &quot; + count);</div><div class="line">			// TODO: handle exception</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">当-Xss128K</div><div class="line">deep of calling = 1100</div><div class="line">java.lang.StackOverflowError</div><div class="line">当-Xss256K</div><div class="line">deep of calling = 2838</div><div class="line">java.lang.StackOverflowError</div></pre></td></tr></table></figure>
 <p>函数嵌套层次由栈的大小决定，越大，就嵌套调用越多</p>
-<h2 id="局部变量表"><a class="header-anchor" href="#局部变量表">¶</a>局部变量表</h2>
+<h2>局部变量表</h2>
 <blockquote>
 <p>保存函数的参数、局部变量。局部变量只在表中有效，栈帧销毁后就没有了。</p>
 </blockquote>
@@ -167,15 +167,15 @@
 <blockquote>
 <p>除此以外,正常情况下,当某个对象被系统收集为无用信息的时候,finalize()将被自动调用,但是jvm不保证finalize()一定被调用,也就是说,finalize()的调用是不确定的,这也就是为什么sun不提倡使用finalize()的原因. 简单来讲，finalize()是在对象被GC回收前会调用的方法，而<code>System.gc()强制GC开始回收工作纠正，不是强制，是建议，具体执行要看GC的意思。简单地说，调用了 System.gc() 之后，java 在内存回收过程中就会调用那些要被回收的对象的 finalize() 方法</code>.</p>
 </blockquote>
-<h2 id="操作数栈"><a class="header-anchor" href="#操作数栈">¶</a>操作数栈</h2>
+<h2>操作数栈</h2>
 <blockquote>
 <p>保存计算过程中的中间结果，作为计算过程中变量临时的存储空间。</p>
 </blockquote>
-<h2 id="帧数据区"><a class="header-anchor" href="#帧数据区">¶</a>帧数据区</h2>
+<h2>帧数据区</h2>
 <blockquote>
 <p>保存访问常量池的指针，方便程序访问常量池；和保存<code>异常处理表</code>.</p>
 </blockquote>
-<h2 id="栈上分配"><a class="header-anchor" href="#栈上分配">¶</a>栈上分配</h2>
+<h2>栈上分配</h2>
 <blockquote>
 <p>Java虚拟就提供的一项优化技术，基本思想是：对于那些线程私有的对象，可以将他们打散分配到栈上。可以在函数调用结束后自行销毁，提高系统性能。</p>
 </blockquote>
@@ -193,7 +193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://forvoid.me/2017/04/30/Java虚拟机架构笔记/" data-id="cj3vmqpl50009ecvvz78c5umy" class="article-share-link">分享</a>
+      <a data-url="https://forvoid.me/2017/04/30/Java虚拟机架构笔记/" data-id="cj42xsvyn000auovvr6ut9hv3" class="article-share-link">Share</a>
       
       
       
@@ -206,7 +206,7 @@
 <nav id="article-nav">
   
     <a href="/2017/04/30/后台设置跨域的理解/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
           后台设置跨域的理解
@@ -216,7 +216,7 @@
   
   
     <a href="/2017/05/01/Java虚拟机参数学习笔记/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">Java虚拟机参数学习笔记</div>
     </a>
   
@@ -253,9 +253,9 @@
     
       <div class="widget" id="toc-widget-fixed">
       
-        <strong class="toc-title">文章目录</strong>
+        <strong class="toc-title">Content</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">java虚拟机的基本结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">Java堆</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">Java栈</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#局部变量表"><span class="toc-number">3.1.</span> <span class="toc-text">¶局部变量表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作数栈"><span class="toc-number">3.2.</span> <span class="toc-text">¶操作数栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#帧数据区"><span class="toc-number">3.3.</span> <span class="toc-text">¶帧数据区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#栈上分配"><span class="toc-number">3.4.</span> <span class="toc-text">¶栈上分配</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">方法区</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">java虚拟机的基本结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">Java堆</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">Java栈</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.1.</span> <span class="toc-text">局部变量表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.2.</span> <span class="toc-text">操作数栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.3.</span> <span class="toc-text">帧数据区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.4.</span> <span class="toc-text">栈上分配</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">方法区</span></a></li></ol>
           </div>
       </div>
     </div>
@@ -286,10 +286,10 @@
   <div class="outer">
     <div id="footer-left">
       &copy; 2014 - 2017 forvoid&nbsp;|&nbsp;
-      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+      Theme by <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
     </div>
      <div id="footer-right">
-      联系方式&nbsp;|&nbsp;172953249@qq.com
+      Contact&nbsp;|&nbsp;172953249@qq.com
     </div>
   </div>
 </footer>

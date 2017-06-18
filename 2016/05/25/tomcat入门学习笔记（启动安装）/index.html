@@ -42,7 +42,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://forvoid.me"></form>
@@ -94,13 +94,13 @@
         
         <p>tomcat是我学习java ee开发以来的一个动态web服务器，从最开始使用他的时候是在大一的课程上面，后来又是在水电气项目上面运用到了tomcat服务器。一直都没时间去好好的学习它，这次我买了《tomcat权威指南第二版（6.0）》好好的去学习一下tomcat，之前很多项目在部署的时候出现很多问题。都不知道怎么去解决。这次好好的学习应该有很大的收获。</p>
 <a id="more"></a>
-<h2 id="tomcat简介"><a class="header-anchor" href="#tomcat简介">¶</a>tomcat简介</h2>
+<h2>tomcat简介</h2>
 <p>tomcat是sun公司的一个java servlet container（容器）.是由James Duncan Davidson编写的。后面交给了apache基金会去维护。是GlassFish Java EE的一种新的参考实现。 是用java语言编写的web服务器。</p>
-<h2 id="tomcat的安装"><a class="header-anchor" href="#tomcat的安装">¶</a>tomcat的安装</h2>
+<h2>tomcat的安装</h2>
 <p>这里我大概只说一下用二进制包的方式安装。基本上就是把tomcat的二进制包下载好。不需要安装，在（使用1-1024端口的情况下使用root用户（如果是linux））运行包bin下的启动脚本就可以启动tomcat了。</p>
 <h3 id="tomcat的前提条件"><a class="header-anchor" href="#tomcat的前提条件">¶</a>tomcat的前提条件</h3>
 <p>必须已经配置好了Java的运行环境（JRE）。</p>
-<h2 id="tomcat的启动-停止-重启"><a class="header-anchor" href="#tomcat的启动-停止-重启">¶</a>tomcat的启动、停止、重启。</h2>
+<h2>tomcat的启动、停止、重启。</h2>
 <h3 id="了解bin中的脚本"><a class="header-anchor" href="#了解bin中的脚本">¶</a>了解bin中的脚本</h3>
 <table>
 <thead>
@@ -205,7 +205,7 @@
 <p>bin/startup.sh</p>
 <h3 id="常规关闭"><a class="header-anchor" href="#常规关闭">¶</a>常规关闭</h3>
 <p>bin/shutdown.sh</p>
-<h2 id="为什么tomcat没有重启的脚本"><a class="header-anchor" href="#为什么tomcat没有重启的脚本">¶</a>为什么tomcat没有重启的脚本</h2>
+<h2>为什么tomcat没有重启的脚本</h2>
 <p>主要原因是：确认tomcat是否正常关闭是比较困难。<br>
 下面列出tomcat的关闭是不可靠的理由：</p>
 <ul>
@@ -216,7 +216,7 @@
 <li>在安全管理器的允许下，有可能tomcat创建出来的线程有可能优先级比tomcat本身要高（这就很尴尬了…）</li>
 <li><code>如果tomcat完全内存溢出</code>（Permgen memory）,那么他在关闭端口或web端口上就无法接受新的连接。（可以设定必须没有它大）。</li>
 </ul>
-<h2 id="如何对tomcat进行重启"><a class="header-anchor" href="#如何对tomcat进行重启">¶</a>如何对tomcat进行重启</h2>
+<h2>如何对tomcat进行重启</h2>
 <p>下面进行tomcat重启操作（linux）</p>
 <ul>
 <li>1、bin/shutdown.sh</li>
@@ -225,7 +225,7 @@
 <li>3、 kill -kill 进程id 告诉系统介绍该进程</li>
 <li>4、确定tomcat不再处于运行状态 bin/startup.sh</li>
 </ul>
-<h2 id="tomcat的环境变量"><a class="header-anchor" href="#tomcat的环境变量">¶</a>tomcat的环境变量</h2>
+<h2>tomcat的环境变量</h2>
 <p>大概写一下，不懂的以后百度吧。<br>
 CATALINA_BASE(整个基本目录）<br>
 CATALINA_HOME(静态部分基本目录)<br>
@@ -241,7 +241,7 @@ JSSE_HOME</p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://forvoid.me/2016/05/25/tomcat入门学习笔记（启动安装）/" data-id="cj3vmqplj000gecvvqxzmb2op" class="article-share-link">分享</a>
+      <a data-url="https://forvoid.me/2016/05/25/tomcat入门学习笔记（启动安装）/" data-id="cj42xsvza000guovvyy3qruxq" class="article-share-link">Share</a>
       
       
       
@@ -255,7 +255,7 @@ JSSE_HOME</p>
   
   
     <a href="/2016/06/21/第一次建立个人github博客的体会/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">第一次建立个人github博客的体会</div>
     </a>
   
@@ -292,9 +292,9 @@ JSSE_HOME</p>
     
       <div class="widget" id="toc-widget-fixed">
       
-        <strong class="toc-title">文章目录</strong>
+        <strong class="toc-title">Content</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#tomcat简介"><span class="toc-number">1.</span> <span class="toc-text">¶tomcat简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tomcat的安装"><span class="toc-number">2.</span> <span class="toc-text">¶tomcat的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tomcat的前提条件"><span class="toc-number">2.1.</span> <span class="toc-text">¶tomcat的前提条件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tomcat的启动-停止-重启"><span class="toc-number">3.</span> <span class="toc-text">¶tomcat的启动、停止、重启。</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#了解bin中的脚本"><span class="toc-number">3.1.</span> <span class="toc-text">¶了解bin中的脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#了解catalina脚本的使用"><span class="toc-number">3.2.</span> <span class="toc-text">¶了解catalina脚本的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常规的启动"><span class="toc-number">3.3.</span> <span class="toc-text">¶常规的启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常规关闭"><span class="toc-number">3.4.</span> <span class="toc-text">¶常规关闭</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么tomcat没有重启的脚本"><span class="toc-number">4.</span> <span class="toc-text">¶为什么tomcat没有重启的脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何对tomcat进行重启"><span class="toc-number">5.</span> <span class="toc-text">¶如何对tomcat进行重启</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tomcat的环境变量"><span class="toc-number">6.</span> <span class="toc-text">¶tomcat的环境变量</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">tomcat简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">tomcat的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tomcat的前提条件"><span class="toc-number">2.1.</span> <span class="toc-text">¶tomcat的前提条件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">tomcat的启动、停止、重启。</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#了解bin中的脚本"><span class="toc-number">3.1.</span> <span class="toc-text">¶了解bin中的脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#了解catalina脚本的使用"><span class="toc-number">3.2.</span> <span class="toc-text">¶了解catalina脚本的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常规的启动"><span class="toc-number">3.3.</span> <span class="toc-text">¶常规的启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常规关闭"><span class="toc-number">3.4.</span> <span class="toc-text">¶常规关闭</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">为什么tomcat没有重启的脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">如何对tomcat进行重启</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">6.</span> <span class="toc-text">tomcat的环境变量</span></a></li></ol>
           </div>
       </div>
     </div>
@@ -325,10 +325,10 @@ JSSE_HOME</p>
   <div class="outer">
     <div id="footer-left">
       &copy; 2014 - 2017 forvoid&nbsp;|&nbsp;
-      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+      Theme by <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
     </div>
      <div id="footer-right">
-      联系方式&nbsp;|&nbsp;172953249@qq.com
+      Contact&nbsp;|&nbsp;172953249@qq.com
     </div>
   </div>
 </footer>

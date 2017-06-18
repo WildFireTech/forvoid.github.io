@@ -42,7 +42,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://forvoid.me"></form>
@@ -95,7 +95,7 @@
         <p>结构型设计模式主要关注的问题是：如何将<code>类</code>和<code>对象</code>进行组合，以便获得功能更加强大的结构。一般结构型模式都是使用<code>继承</code>机制将接口进行组合.</p>
 <a id="more"></a>
 <p>从程序的结构上解决模块之间的耦合问题。</p>
-<h2 id="适配器模式-很重要-adapter"><a class="header-anchor" href="#适配器模式-很重要-adapter">¶</a>适配器模式（很重要）（adapter）</h2>
+<h2>适配器模式（很重要）（adapter）</h2>
 <p>将一个类的接口转化称客户希望的另外一个接口。适配器使得原来不能一起工作（不兼容）的类，可以一起工作。 就类似于电源适配器一样的模式。</p>
 <p>类适配器的灵活性比较差， 对象适配器的灵活性好。</p>
 <p>对象适配器：不是通过继承方式，而是通过对象组合方式来进行处理。</p>
@@ -108,7 +108,7 @@
 <li>当需要创建一个可以被复用的类，该类能苟与其他无关的类（或者无法遇见的类）协作同时工作。</li>
 <li>当需要使用一些已近存在的子类，但是不能对所有进行子类化以匹配它们的接口时，对象适配器可以对其父类接口进行适配。</li>
 </ul>
-<h2 id="桥接模式"><a class="header-anchor" href="#桥接模式">¶</a>桥接模式</h2>
+<h2>桥接模式</h2>
 <p>定义：将抽象部分与他实现的部分分离，是他们都可以独立的变化。</p>
 <p>可以理解为如何进行选课，不同院系 不同课程 相同课程难度等，</p>
 <p>什么是抽象类与他的实现类分离: 就是说抽象类和他的派生类用来实现自己的对象。适用于<code>多重分类</code>并且每种分类都需要独立变化的情况。</p>
@@ -120,7 +120,7 @@
 <li>当类的抽象以及它的实现都应该可以通过生成子类的方法加以扩展。</li>
 <li>当对一个抽象类的实现部分的修改应对客户不参数影响（客户端不要重新编写）。</li>
 </ul>
-<h2 id="装饰模式"><a class="header-anchor" href="#装饰模式">¶</a>装饰模式</h2>
+<h2>装饰模式</h2>
 <p>定义： 动态的给一个对像添加一些额外的职责。 <code>增加功能</code>方面比生成子类添加更加的灵活。</p>
 <p>如果增加的功能相对于整个类来说比较微小时，（功能非核心），最好用装饰模式，做到不改变原有类文件和使用继承的情况下，动态扩展某个对象的功能。</p>
 <p>在稳定接口的前提下为对象扩展功能，主要是解决用继承的方式为对象扩展大量功能而造成的子对象数量膨胀的问题</p>
@@ -131,7 +131,7 @@
 <li>当需要将对象的某些职责进行撤销操作时。</li>
 <li>当不能用生成子类方法进行当前系统扩充时。</li>
 </ul>
-<h2 id="组合模式"><a class="header-anchor" href="#组合模式">¶</a>组合模式</h2>
+<h2>组合模式</h2>
 <p>定义： 将对象组合成一个树形结构以表示“整体-部分”的层次结构。使用户对单个对象和组合对象的使用具有一致性。</p>
 <p>比如水电气节点 一些节点机构之类的 都可以在代码中使用组合模式 去忽略单体和 单体中的一些分支。 而对他们进行无差别的共性操作。</p>
 <p>解决客户程序与复杂对象容器的解耦，一类具有“容器特征”的对象——即他们在充当对象的同时，又是其他对象的容器的情况，通过继承统一的接口，我们可以将容器对象及其子对象看成同一类对象使用，以减少对象使用中的复杂度。</p>
@@ -141,7 +141,7 @@
 <li>当开发代码需要表示整体与部分的结构时，</li>
 <li>当用户需要忽略组合对象和单个对象之间的不同时。</li>
 </ul>
-<h2 id="享元模式"><a class="header-anchor" href="#享元模式">¶</a>享元模式</h2>
+<h2>享元模式</h2>
 <p>定义： 运用共享技术有效的支持大量细粒度的对象。</p>
 <p>主要是共享了一些常用的或者内存较大的一些对象，让这些对象在整个需要的地方都只用他这个一个。（这种状态）</p>
 <p>享元对象是不可改变的。共享的对象 是细粒度的很多地方都会用到它。</p>
@@ -154,7 +154,7 @@
 <li>对象的很多状态都可以改变为外部状态时。（就是把那个状态放到外面进行保存，减少状态的重复加载带来的内存消耗和理解力的降低）</li>
 <li>使用外部状态后可以用较少的共享对象取代大量对象时。</li>
 </ul>
-<h2 id="外观模式"><a class="header-anchor" href="#外观模式">¶</a>外观模式</h2>
+<h2>外观模式</h2>
 <p>定义：为子系统中的一组接口提供一个一致的界面。（就是在系统对外的时候，让一些功能尽量在一个接口去调用，方便外部降低学习成本）</p>
 <p>就相当与客户端设置了一个&quot;办事处&quot;,这个办事处帮客户端处理跑腿（多个部门跑腿）的事情，让客户端更加的专注于自己的事情。</p>
 <p>实现了<code>依赖倒转</code> 和 <code>迪米特</code>法则的思想</p>
@@ -166,7 +166,7 @@
 <li>当客户端与抽象类的实现部分之间存在着很大的依赖性时。</li>
 <li>当需要构建一个层次结构的子系统时。（就是把这个层次的一些复杂的东西都封装起来）</li>
 </ul>
-<h2 id="代理模式"><a class="header-anchor" href="#代理模式">¶</a>代理模式</h2>
+<h2>代理模式</h2>
 <p>定义： 为其他对象提供一种代理以控制对这个对象的访问。</p>
 <p>静态代理 动态代理 glib代理</p>
 <p>一般是不建议用代理模式的 因为代理对象和被代理对象是强耦合关系。</p>
@@ -179,13 +179,13 @@
 <li>当需要控制对被代理对象的访问权限时（加一个权限判断）。</li>
 <li>当需要在访问对象时执行一些附加操作时。（比如统计他的访问次数等等）。</li>
 </ul>
-<h2 id="总结"><a class="header-anchor" href="#总结">¶</a>总结</h2>
+<h2>总结</h2>
 <p>结构型模式 就是为解决一些复杂的类于类之间，对象与对象，对象与类之间的特殊关系，提供的一种设计思想。运用这些思想可以解决很多复制的逻辑问题，和使代码更加的合理 便于理解。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://forvoid.me/2017/03/24/结构型模式总结和分析/" data-id="cj3vmqpmp001decvv4qvovhsu" class="article-share-link">分享</a>
+      <a data-url="https://forvoid.me/2017/03/24/结构型模式总结和分析/" data-id="cj42xsw26001muovvc4n51mtb" class="article-share-link">Share</a>
       
       
       
@@ -198,7 +198,7 @@
 <nav id="article-nav">
   
     <a href="/2017/03/01/我的2017年书单/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
           2017年书单📚
@@ -208,7 +208,7 @@
   
   
     <a href="/2017/04/23/Java引用类型及分析/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">Java引用类型及分析</div>
     </a>
   
@@ -245,9 +245,9 @@
     
       <div class="widget" id="toc-widget-fixed">
       
-        <strong class="toc-title">文章目录</strong>
+        <strong class="toc-title">Content</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#适配器模式-很重要-adapter"><span class="toc-number">1.</span> <span class="toc-text">¶适配器模式（很重要）（adapter）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模式结构"><span class="toc-number">1.1.</span> <span class="toc-text">¶模式结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适用范围"><span class="toc-number">1.2.</span> <span class="toc-text">¶适用范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#桥接模式"><span class="toc-number">2.</span> <span class="toc-text">¶桥接模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模式结构-v2"><span class="toc-number">2.1.</span> <span class="toc-text">¶模式结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适用范围-v2"><span class="toc-number">2.2.</span> <span class="toc-text">¶适用范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#装饰模式"><span class="toc-number">3.</span> <span class="toc-text">¶装饰模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模式结构-v3"><span class="toc-number">3.1.</span> <span class="toc-text">¶模式结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适用范围-v3"><span class="toc-number">3.2.</span> <span class="toc-text">¶适用范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#组合模式"><span class="toc-number">4.</span> <span class="toc-text">¶组合模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模式结构-v4"><span class="toc-number">4.1.</span> <span class="toc-text">¶模式结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适用范围-v4"><span class="toc-number">4.2.</span> <span class="toc-text">¶适用范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#享元模式"><span class="toc-number">5.</span> <span class="toc-text">¶享元模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模式结构-v5"><span class="toc-number">5.1.</span> <span class="toc-text">¶模式结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适用范围-v5"><span class="toc-number">5.2.</span> <span class="toc-text">¶适用范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#外观模式"><span class="toc-number">6.</span> <span class="toc-text">¶外观模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模式结构-v6"><span class="toc-number">6.1.</span> <span class="toc-text">¶模式结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适用范围-v6"><span class="toc-number">6.2.</span> <span class="toc-text">¶适用范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代理模式"><span class="toc-number">7.</span> <span class="toc-text">¶代理模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模式结构-v7"><span class="toc-number">7.1.</span> <span class="toc-text">¶模式结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适用范围-v7"><span class="toc-number">7.2.</span> <span class="toc-text">¶适用范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">8.</span> <span class="toc-text">¶总结</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">适配器模式（很重要）（adapter）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模式结构"><span class="toc-number">1.1.</span> <span class="toc-text">¶模式结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适用范围"><span class="toc-number">1.2.</span> <span class="toc-text">¶适用范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">桥接模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模式结构-v2"><span class="toc-number">2.1.</span> <span class="toc-text">¶模式结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适用范围-v2"><span class="toc-number">2.2.</span> <span class="toc-text">¶适用范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">装饰模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模式结构-v3"><span class="toc-number">3.1.</span> <span class="toc-text">¶模式结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适用范围-v3"><span class="toc-number">3.2.</span> <span class="toc-text">¶适用范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">组合模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模式结构-v4"><span class="toc-number">4.1.</span> <span class="toc-text">¶模式结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适用范围-v4"><span class="toc-number">4.2.</span> <span class="toc-text">¶适用范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">享元模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模式结构-v5"><span class="toc-number">5.1.</span> <span class="toc-text">¶模式结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适用范围-v5"><span class="toc-number">5.2.</span> <span class="toc-text">¶适用范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">6.</span> <span class="toc-text">外观模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模式结构-v6"><span class="toc-number">6.1.</span> <span class="toc-text">¶模式结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适用范围-v6"><span class="toc-number">6.2.</span> <span class="toc-text">¶适用范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">7.</span> <span class="toc-text">代理模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模式结构-v7"><span class="toc-number">7.1.</span> <span class="toc-text">¶模式结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适用范围-v7"><span class="toc-number">7.2.</span> <span class="toc-text">¶适用范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">8.</span> <span class="toc-text">总结</span></a></li></ol>
           </div>
       </div>
     </div>
@@ -278,10 +278,10 @@
   <div class="outer">
     <div id="footer-left">
       &copy; 2014 - 2017 forvoid&nbsp;|&nbsp;
-      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+      Theme by <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
     </div>
      <div id="footer-right">
-      联系方式&nbsp;|&nbsp;172953249@qq.com
+      Contact&nbsp;|&nbsp;172953249@qq.com
     </div>
   </div>
 </footer>

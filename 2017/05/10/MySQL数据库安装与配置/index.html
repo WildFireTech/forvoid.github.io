@@ -44,7 +44,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://forvoid.me"></form>
@@ -98,8 +98,8 @@
 <h3 id="更新说明"><a class="header-anchor" href="#更新说明">¶</a>更新说明</h3>
 <p>2017/5/10:加入了Mysql7在win10、centos7下的安装配置说明（win10是免安装的压缩包，centos是rpm）</p>
 <a id="more"></a>
-<h2 id="各操作系统的通用配置"><a class="header-anchor" href="#各操作系统的通用配置">¶</a>各操作系统的通用配置</h2>
-<h2 id="windows环境下进行mysql数据库的安装"><a class="header-anchor" href="#windows环境下进行mysql数据库的安装">¶</a>windows环境下进行MySQL数据库的安装</h2>
+<h2>各操作系统的通用配置</h2>
+<h2>windows环境下进行MySQL数据库的安装</h2>
 <p>讲解主要分为以下几个步骤：</p>
 <ul>
 <li>如何下载免安装包</li>
@@ -138,7 +138,7 @@ data文件夹.</p>
 <h3 id="忘记密码处理"><a class="header-anchor" href="#忘记密码处理">¶</a>忘记密码处理</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">存在问题解决：（忘记密码处理）</div><div class="line"></div><div class="line">1、 好了，坑来了。以前我们安装mysql，root用户是不需要密码的，从mysql5.7开始不行了。坑了我一小</div><div class="line">    会，我就记得我没设置密码啊，莫名其妙我竟然开始慌了。ERROR 1045 (28000): Access denied for</div><div class="line">    user&apos;root&apos;@&apos;localhost&apos;(using password: NO)，好心塞啊。</div><div class="line"></div><div class="line">2、别慌，跟着我先关闭mysql服务。</div><div class="line"></div><div class="line">3、在提示命令管理工具输入如下命令，进入安全模式：mysqld --defaults-file=&quot;E:\mysql5.7\my.ini&quot; --</div><div class="line">    console --skip-grant-tables，这里的路径需要根据你安装的实际路径修改。好的，这个窗口我们让它就这</div><div class="line">    么运行，然后重新打开一个命令提示窗口，记得一定是管理员权限。</div><div class="line"></div><div class="line">4、接着我们重新以管理员身份打开一个dos窗口，继续输入用户名和密码登陆，</div><div class="line"></div><div class="line">    mysql –u root –p  回车</div><div class="line"></div><div class="line">哇塞成功了。别急，这只是第一步。接下来我们还是要修改root的默认密码。</div><div class="line"></div><div class="line">5、 接着，我们来选择当前使用的数据库：输入use mysql；</div><div class="line"></div><div class="line">    然后尝试修改密码，艾玛，字段不对。</div><div class="line"></div><div class="line">    5.1、进入mysql数据库：</div><div class="line"></div><div class="line">    mysql&gt; use mysql;</div><div class="line"></div><div class="line">    Database changed</div><div class="line"></div><div class="line">    5.2、给root用户设置新密码</div><div class="line"></div><div class="line">        mysql&gt; update user set authentication_string=password(&apos;新密码&apos;) where user=&apos;root&apos;;</div><div class="line"></div><div class="line">        Query OK,1 rows affected(0.01 sec)Rows matched:1 Changed:1Warnings: 0</div><div class="line"></div><div class="line">    5.3、刷新数据库 （一定要记得刷新）：mysql&gt;flush privileges; </div><div class="line"></div><div class="line">            QueryOK, 0 rows affected (0.00 sec)</div><div class="line"></div><div class="line">    5.4、退出：mysql：mysql&gt; quit</div><div class="line"></div><div class="line">下次输入mysql -uroot -p 就可以用新密码登录了。</div></pre></td></tr></table></figure>
 <p><a href="https://my.oschina.net/pmos/blog/620860" target="_blank" rel="external">引用链接:mysql-5.7.11-winx64 免安装版配置及密码问题处理</a></p>
-<h2 id="centos7安装mysql数据库-rpm安装方式"><a class="header-anchor" href="#centos7安装mysql数据库-rpm安装方式">¶</a>CentOS7安装MySQL数据库(RPM安装方式)</h2>
+<h2>CentOS7安装MySQL数据库(RPM安装方式)</h2>
 <h3 id="step-1-设置引用"><a class="header-anchor" href="#step-1-设置引用">¶</a>Step 1 设置引用</h3>
 <p>进入网站</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://dev.mysql.com/downloads/repo/yum/</div></pre></td></tr></table></figure>
@@ -177,7 +177,7 @@ data文件夹.</p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://forvoid.me/2017/05/10/MySQL数据库安装与配置/" data-id="cj3vmqpla000aecvvugtvt4op" class="article-share-link">分享</a>
+      <a data-url="https://forvoid.me/2017/05/10/MySQL数据库安装与配置/" data-id="cj42xsvyh0009uovvq71yacrn" class="article-share-link">Share</a>
       
       
       
@@ -190,7 +190,7 @@ data文件夹.</p>
 <nav id="article-nav">
   
     <a href="/2017/05/09/Java虚拟机垃圾收集器和内存分配/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
           Java虚拟机垃圾收集器和内存分配
@@ -200,7 +200,7 @@ data文件夹.</p>
   
   
     <a href="/2017/05/15/配置校园内网netkeeper路由器使用/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">配置校园内网netkeeper路由器使用📫</div>
     </a>
   
@@ -237,9 +237,9 @@ data文件夹.</p>
     
       <div class="widget" id="toc-widget-fixed">
       
-        <strong class="toc-title">文章目录</strong>
+        <strong class="toc-title">Content</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#更新说明"><span class="toc-number">1.</span> <span class="toc-text">¶更新说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#各操作系统的通用配置"><span class="toc-number"></span> <span class="toc-text">¶各操作系统的通用配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#windows环境下进行mysql数据库的安装"><span class="toc-number"></span> <span class="toc-text">¶windows环境下进行MySQL数据库的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载免安装版"><span class="toc-number">1.</span> <span class="toc-text">¶下载免安装版</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#怎样安装"><span class="toc-number">2.</span> <span class="toc-text">¶怎样安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何配置数据库密码"><span class="toc-number">3.</span> <span class="toc-text">¶如何配置数据库密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#忘记密码处理"><span class="toc-number">4.</span> <span class="toc-text">¶忘记密码处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#centos7安装mysql数据库-rpm安装方式"><span class="toc-number"></span> <span class="toc-text">¶CentOS7安装MySQL数据库(RPM安装方式)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#step-1-设置引用"><span class="toc-number">1.</span> <span class="toc-text">¶Step 1 设置引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-2-启动数据库并载入"><span class="toc-number">2.</span> <span class="toc-text">¶Step 2 启动数据库并载入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置数据库"><span class="toc-number">3.</span> <span class="toc-text">¶配置数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#学习引用的博客"><span class="toc-number">4.</span> <span class="toc-text">¶学习引用的博客</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#更新说明"><span class="toc-number">1.</span> <span class="toc-text">¶更新说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">各操作系统的通用配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">windows环境下进行MySQL数据库的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载免安装版"><span class="toc-number">1.</span> <span class="toc-text">¶下载免安装版</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#怎样安装"><span class="toc-number">2.</span> <span class="toc-text">¶怎样安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何配置数据库密码"><span class="toc-number">3.</span> <span class="toc-text">¶如何配置数据库密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#忘记密码处理"><span class="toc-number">4.</span> <span class="toc-text">¶忘记密码处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">CentOS7安装MySQL数据库(RPM安装方式)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#step-1-设置引用"><span class="toc-number">1.</span> <span class="toc-text">¶Step 1 设置引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-2-启动数据库并载入"><span class="toc-number">2.</span> <span class="toc-text">¶Step 2 启动数据库并载入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置数据库"><span class="toc-number">3.</span> <span class="toc-text">¶配置数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#学习引用的博客"><span class="toc-number">4.</span> <span class="toc-text">¶学习引用的博客</span></a></li></ol>
           </div>
       </div>
     </div>
@@ -270,10 +270,10 @@ data文件夹.</p>
   <div class="outer">
     <div id="footer-left">
       &copy; 2014 - 2017 forvoid&nbsp;|&nbsp;
-      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+      Theme by <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
     </div>
      <div id="footer-right">
-      联系方式&nbsp;|&nbsp;172953249@qq.com
+      Contact&nbsp;|&nbsp;172953249@qq.com
     </div>
   </div>
 </footer>

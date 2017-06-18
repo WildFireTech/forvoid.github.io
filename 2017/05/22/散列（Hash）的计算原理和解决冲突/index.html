@@ -5,19 +5,19 @@
   
   <title>散列（Hash）的计算原理和解决冲突 | forvoid的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="¶散列表是什么 散列就是把数据的排列方式用该元素的值或者关键字生成的函数确定（用一个规则确定元素的位置）的一种算法。  元素存储的地方叫散列表 位置由散列函数确定. 散列表中的位置称为单元（cell）或者桶（bucket）.">
+  <meta name="description" content="散列表是什么 散列就是把数据的排列方式用该元素的值或者关键字生成的函数确定（用一个规则确定元素的位置）的一种算法。  元素存储的地方叫散列表 位置由散列函数确定. 散列表中的位置称为单元（cell）或者桶（bucket）.">
 <meta name="keywords" content="算法基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="散列（Hash）的计算原理和解决冲突">
 <meta property="og:url" content="https://forvoid.me/2017/05/22/散列（Hash）的计算原理和解决冲突/index.html">
 <meta property="og:site_name" content="forvoid的博客">
-<meta property="og:description" content="¶散列表是什么 散列就是把数据的排列方式用该元素的值或者关键字生成的函数确定（用一个规则确定元素的位置）的一种算法。  元素存储的地方叫散列表 位置由散列函数确定. 散列表中的位置称为单元（cell）或者桶（bucket）.">
+<meta property="og:description" content="散列表是什么 散列就是把数据的排列方式用该元素的值或者关键字生成的函数确定（用一个规则确定元素的位置）的一种算法。  元素存储的地方叫散列表 位置由散列函数确定. 散列表中的位置称为单元（cell）或者桶（bucket）.">
 <meta property="og:image" content="https://forvoid.me/images/algori/hash_chaining.png">
 <meta property="og:image" content="https://forvoid.me/images/algori/hash_chaining_bigmemory.png">
 <meta property="og:updated_time" content="2017-05-22T15:42:57.244Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="散列（Hash）的计算原理和解决冲突">
-<meta name="twitter:description" content="¶散列表是什么 散列就是把数据的排列方式用该元素的值或者关键字生成的函数确定（用一个规则确定元素的位置）的一种算法。  元素存储的地方叫散列表 位置由散列函数确定. 散列表中的位置称为单元（cell）或者桶（bucket）.">
+<meta name="twitter:description" content="散列表是什么 散列就是把数据的排列方式用该元素的值或者关键字生成的函数确定（用一个规则确定元素的位置）的一种算法。  元素存储的地方叫散列表 位置由散列函数确定. 散列表中的位置称为单元（cell）或者桶（bucket）.">
 <meta name="twitter:image" content="https://forvoid.me/images/algori/hash_chaining.png">
   
     <link rel="alternate" href="/atom.xml" title="forvoid的博客" type="application/atom+xml">
@@ -45,7 +45,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://forvoid.me"></form>
@@ -95,7 +95,7 @@
       
         <!-- Table of Contents -->
         
-        <h2 id="散列表是什么"><a class="header-anchor" href="#散列表是什么">¶</a>散列表是什么</h2>
+        <h2>散列表是什么</h2>
 <p>散列就是把数据的排列方式用该<code>元素的值</code>或者<code>关键字</code>生成的函数确定（用一个规则确定元素的位置）的一种算法。</p>
 <ul>
 <li>元素存储的地方叫<code>散列表</code></li>
@@ -107,7 +107,7 @@
 <p>散列表的时间复杂度是O(1)。空间复杂度是O（n）。</p>
 <p><code>完美散列函数</code>:每个元素都映射到唯一的位置上的函数。（是不存在的）</p>
 <p><code>负载因子</code>:0-1 当已占空间占全部空间的 比例大于负载因子时，改变总的空间大小。</p>
-<h2 id="散列函数有哪几种常有的"><a class="header-anchor" href="#散列函数有哪几种常有的">¶</a>散列函数有哪几种常有的</h2>
+<h2>散列函数有哪几种常有的</h2>
 <h3 id="余数法-掌握"><a class="header-anchor" href="#余数法-掌握">¶</a>余数法 （掌握）</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">HashCode(key) = Math.abs(key)%p</div></pre></td></tr></table></figure>
 <p>用值的正整数除于正整数p作为给定元素的索引。</p>
@@ -131,7 +131,7 @@
 <p>就是瞎分析一波，合理的将关键字放到各位置上。~<sub>(&gt;_&lt;)</sub>~</p>
 <h3 id="长度相关法"><a class="header-anchor" href="#长度相关法">¶</a>长度相关法</h3>
 <p>关键字和关键字的长度用某种方式绑定起来生成索引本身，或者中间值。结合其他的方法</p>
-<h2 id="解决冲突"><a class="header-anchor" href="#解决冲突">¶</a>解决冲突</h2>
+<h2>解决冲突</h2>
 <p>把大小设置为预期元素的150%。如果大小未知的话就要考虑设置<code>负载因子</code>动态的改变散列表大小。</p>
 <h3 id="链地址法-这个很重要hashmap之类的基本都是这个实现的"><a class="header-anchor" href="#链地址法-这个很重要hashmap之类的基本都是这个实现的">¶</a>链地址法（这个很重要hashMap之类的基本都是这个实现的）</h3>
 <p>用于解决冲突的链地址法。只是在概念上把散列表当作是集合的列表，而不是独立的列表。<br>
@@ -172,7 +172,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://forvoid.me/2017/05/22/散列（Hash）的计算原理和解决冲突/" data-id="cj3vmqpmc0014ecvvq2emozs0" class="article-share-link">分享</a>
+      <a data-url="https://forvoid.me/2017/05/22/散列（Hash）的计算原理和解决冲突/" data-id="cj42xsw1e001cuovvzoendm0n" class="article-share-link">Share</a>
       
       
       
@@ -185,7 +185,7 @@
 <nav id="article-nav">
   
     <a href="/2017/05/16/事务管理简介（数据库和spring）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
           事务管理简介（数据库和spring）
@@ -195,7 +195,7 @@
   
   
     <a href="/2017/05/23/程序设计原则（六个）/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">程序设计原则（六个）</div>
     </a>
   
@@ -232,9 +232,9 @@
     
       <div class="widget" id="toc-widget-fixed">
       
-        <strong class="toc-title">文章目录</strong>
+        <strong class="toc-title">Content</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#散列表是什么"><span class="toc-number">1.</span> <span class="toc-text">¶散列表是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#散列函数有哪几种常有的"><span class="toc-number">2.</span> <span class="toc-text">¶散列函数有哪几种常有的</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#余数法-掌握"><span class="toc-number">2.1.</span> <span class="toc-text">¶余数法 （掌握）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#折叠法"><span class="toc-number">2.2.</span> <span class="toc-text">¶折叠法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#平方取中法"><span class="toc-number">2.3.</span> <span class="toc-text">¶平方取中法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基数转化法"><span class="toc-number">2.4.</span> <span class="toc-text">¶基数转化法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数字分析法"><span class="toc-number">2.5.</span> <span class="toc-text">¶数字分析法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#长度相关法"><span class="toc-number">2.6.</span> <span class="toc-text">¶长度相关法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决冲突"><span class="toc-number">3.</span> <span class="toc-text">¶解决冲突</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#链地址法-这个很重要hashmap之类的基本都是这个实现的"><span class="toc-number">3.1.</span> <span class="toc-text">¶链地址法（这个很重要hashMap之类的基本都是这个实现的）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开发地址法"><span class="toc-number">3.2.</span> <span class="toc-text">¶开发地址法</span></a></li></ol></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">散列表是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">散列函数有哪几种常有的</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#余数法-掌握"><span class="toc-number">2.1.</span> <span class="toc-text">¶余数法 （掌握）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#折叠法"><span class="toc-number">2.2.</span> <span class="toc-text">¶折叠法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#平方取中法"><span class="toc-number">2.3.</span> <span class="toc-text">¶平方取中法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基数转化法"><span class="toc-number">2.4.</span> <span class="toc-text">¶基数转化法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数字分析法"><span class="toc-number">2.5.</span> <span class="toc-text">¶数字分析法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#长度相关法"><span class="toc-number">2.6.</span> <span class="toc-text">¶长度相关法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">解决冲突</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#链地址法-这个很重要hashmap之类的基本都是这个实现的"><span class="toc-number">3.1.</span> <span class="toc-text">¶链地址法（这个很重要hashMap之类的基本都是这个实现的）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开发地址法"><span class="toc-number">3.2.</span> <span class="toc-text">¶开发地址法</span></a></li></ol></li></ol>
           </div>
       </div>
     </div>
@@ -265,10 +265,10 @@
   <div class="outer">
     <div id="footer-left">
       &copy; 2014 - 2017 forvoid&nbsp;|&nbsp;
-      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+      Theme by <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
     </div>
      <div id="footer-right">
-      联系方式&nbsp;|&nbsp;172953249@qq.com
+      Contact&nbsp;|&nbsp;172953249@qq.com
     </div>
   </div>
 </footer>
